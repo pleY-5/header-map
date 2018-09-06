@@ -10,26 +10,31 @@ mongoose.connect('mongodb://127.0.0.1:27017/yelpReactor', {useNewUrlParser: true
 // });
 
 let restaurantSchema = mongoose.Schema({
-  id: Number,
   name: String,
   ratings: {
-    yearly: Number, 
+    yearly: {
+      '2016': Array,
+      '2017': Array,
+      '2018': Array
+    }, 
     current: Number, 
     individualStarsAmount: {
-    	1: Number,
-    	2: Number,
+    	1:Number,
+    	2:Number,
     	3:Number,
     	4:Number,
     	5:Number
-    }
+    },
+    amount: Number
   },
-  categories: String,
+  categories: Array,
   dollars: Number,
   address: String,
   mapPhoto: String,
   tel: String,
   url: String,
-  claimed: Boolean
+  claimed: Boolean,
+  yelpingSince: String
 });
 
 let Restaurants = mongoose.model('Restaurants', restaurantSchema);

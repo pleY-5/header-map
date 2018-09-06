@@ -3,11 +3,11 @@ let Promise = require('bluebird')
 mongoose.Promise = Promise;
 
 mongoose.connect('mongodb://127.0.0.1:27017/yelpReactor', {useNewUrlParser: true });
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log('db connected')
-});
+// var db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', function() {
+//   console.log('db connected')
+// });
 
 let restaurantSchema = mongoose.Schema({
   id: Number,

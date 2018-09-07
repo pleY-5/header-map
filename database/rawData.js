@@ -1,7 +1,10 @@
 let faker = require('faker');
 let _ = require('underscore');
 
-const restaurantName = ["Minhas Micro Brewery", "CK'S BBQ & Catering", "La Bastringue", "Geico Insurance", "Action Engine", "The Coffee Bean & Tea Leaf", "Bnc Cake House", "Thai One On", "Filiberto's Mexican Food", "Maggie & Stella's Gifts", "Sushi 8", "Southern Accent Restaurant", "Original Hamburger Works", "Mysore Indian Cuisine", "North Haven Barber Shop", "Safeway Food & Drug", "Harlow", "Citi Trends", "Nevada Title And Payday Loans", "CakesbyToi", "Park Stone Pavers", "Rally's Hamburgers", "Rib Shop", "Mabel's Bakery", "Salsitas", "Los Toros Numero 2", "ADT Security Services, Inc.", "The Coffee Mill Restaurant", "Laurier Optical", "Teresas Pizzeria", "Chicken Lips", "Schonheit Gardens", "Subway", "Omelet House Summerlin", "Pamper Me Perfect Beauty & Wellness", "Crossroads Country Cafe'", "Strickland's Ice Cream", "John John's Seafood", "Wellsprings of Gilbert", "Little Caesars Pizza", "Audio Express", "Dunkin Donuts", "Art Bathe", "Super 8 by Wyndham Toronto East ON", "Cinthya's Beauty Salon", "Aria Remodeling", "Kim Phat Inc", "Manuel's Mexican Restaurant & Cantina - Bell Rd", "GoodLife Fitness", "E R Automotive", "Not Just Antiques Mart", "Legislative Assembly of Ontario", "JAM Scooter Rental Of Las Vegas", "La Rosa Chilena", "Jia Jia International Moving", "Brett's Plumbing", "Crossfit Revitalize", "Junior's Pizzeria", "Shower Solutions", "Subway", "Baby Bundle 3d/4d Ultrasound", "Baja Fresh Mexican Grill", "Red Crowns Pub", "KD Nails", "Family Dentistry at CIC", "Chevron Pitstop", "Gold Pawn Brokers", "Philip Pelusi", "FedEx Office Print & Ship Center", "Royal Conservatory of Music", "On The Path Yard Care", "Central Church - Henderson", "Sunset Castle", "China Palace", "Blondie & Co Salon", "Mattress Firm South Euclid", "Marshalls", "Walgreens", "Lauren Byrne, MD", "Fit Life 120", "Allwyn's Bakery", "Mattress Firm Carefree", "Fornetti", "Provence Bakery", "Makeupbygaby1974", "Above and Beyond Dog Grooming", "Vegas Vapolife", "Ice Cream Patio", "Hub Coffee House & Locavorium", "Pizza Bellagio", "Long Animal Hospital", "Apple Nail & Spa", "Regino's Pizza", "Walmart", "Avenue Deli", "More Than Pies Baking", "Shoppers Drug Mart", "Indian Street Food Company", "Popular Nails", "Chase Bank"];
+const restaurantName = [
+	"Minhas Micro Brewery", 
+	"CK'S BBQ & Catering", "La Bastringue", "Geico Insurance", "Action Engine", "The Coffee Bean & Tea Leaf", "Bnc Cake House", "Thai One On", "Filiberto's Mexican Food", "Maggie & Stella's Gifts", "Sushi 8", "Southern Accent Restaurant", "Original Hamburger Works", "Mysore Indian Cuisine", "North Haven Barber Shop", "Safeway Food & Drug", "Harlow", "Citi Trends", "Nevada Title And Payday Loans", "CakesbyToi", "Park Stone Pavers", "Rally's Hamburgers", "Rib Shop", "Mabel's Bakery", "Salsitas", "Los Toros Numero 2", "ADT Security Services, Inc.", "The Coffee Mill Restaurant", "Laurier Optical", "Teresas Pizzeria", "Chicken Lips", "Schonheit Gardens", "Subway", "Omelet House Summerlin", "Pamper Me Perfect Beauty & Wellness", "Crossroads Country Cafe'", "Strickland's Ice Cream", "John John's Seafood", "Wellsprings of Gilbert", "Little Caesars Pizza", "Audio Express", "Dunkin Donuts", "Art Bathe", "Super 8 by Wyndham Toronto East ON", "Cinthya's Beauty Salon", "Aria Remodeling", "Kim Phat Inc", "Manuel's Mexican Restaurant & Cantina - Bell Rd", "GoodLife Fitness", "E R Automotive", "Not Just Antiques Mart", "Legislative Assembly of Ontario", "JAM Scooter Rental Of Las Vegas", "La Rosa Chilena", "Jia Jia International Moving", "Brett's Plumbing", "Crossfit Revitalize", "Junior's Pizzeria", "Shower Solutions", "Subway", "Baby Bundle 3d/4d Ultrasound", "Baja Fresh Mexican Grill", "Red Crowns Pub", "KD Nails", "Family Dentistry at CIC", "Chevron Pitstop", "Gold Pawn Brokers", "Philip Pelusi", "FedEx Office Print & Ship Center", "Royal Conservatory of Music", "On The Path Yard Care", "Central Church - Henderson", "Sunset Castle", "China Palace", "Blondie & Co Salon", "Mattress Firm South Euclid", "Marshalls", "Walgreens", "Lauren Byrne, MD", "Fit Life 120", "Allwyn's Bakery", "Mattress Firm Carefree", "Fornetti", "Provence Bakery", "Makeupbygaby1974", "Above and Beyond Dog Grooming", "Vegas Vapolife", "Ice Cream Patio", "Hub Coffee House & Locavorium", "Pizza Bellagio", "Long Animal Hospital", "Apple Nail & Spa", "Regino's Pizza", "Walmart", "Avenue Deli", "More Than Pies Baking", "Shoppers Drug Mart", "Indian Street Food Company", "Popular Nails", "Chase Bank"
+];
 
 let restaurants = [];
 
@@ -205,17 +208,18 @@ let getRandomRatings = (rate) => {
 restaurantName.forEach((res) => {
 	let data = {};
 	data.name = res;
+	//ratings
 	data.ratings = {
 		yearly: {
 			'2016': getRandomRatings()
 		},
 		current: 0,
 		stars: {
-			'5': Math.floor(Math.random() * Math.floor(500)),
-			'4': Math.floor(Math.random() * Math.floor(400)),
-			'3': Math.floor(Math.random() * Math.floor(300)),
-			'2': Math.floor(Math.random() * Math.floor(300)),
-			'1': Math.floor(Math.random() * Math.floor(300))
+			'5': Math.floor(Math.random() * Math.floor(50)),
+			'4': Math.floor(Math.random() * Math.floor(40)),
+			'3': Math.floor(Math.random() * Math.floor(30)),
+			'2': Math.floor(Math.random() * Math.floor(30)),
+			'1': Math.floor(Math.random() * Math.floor(30))
 		},
 		amount: 0
 	}
@@ -229,17 +233,34 @@ restaurantName.forEach((res) => {
 	data.ratings.yearly['2018'][10] = null;
 	data.ratings.yearly['2018'][11] = null;
 	data.ratings.yearly['2018'][12] = null;
-
+	//categories
 	data.categories = [];
-	let categoriesNum = Math.floor(Math.random() * Math.floor(2))+1;
+	let categoriesNum = Math.floor(Math.random() * Math.floor(3))+1;
 	for(let i = 0; i < categoriesNum; i++){
 		let cate = {};
 		cate.type = Object.keys(categories)[Math.floor(Math.random() * Math.floor(2))];
 		cate.specific = categories[cate.type][Math.floor(Math.random() * Math.floor(categories[cate.type].length))];
 		data.categories.push(cate);
 	}
+	//dollars
+	data.dollars = Math.floor(Math.random() * Math.floor(3))+1;
+	//address
+	data.address = faker.address.streetAddress();
+	data.city = faker.address.city();
+	data.state = faker.address.state();
+	data.postalCode = faker.address.zipCode();
+	data.latitude = faker.address.latitude();
+	data.longitude = faker.address.longitude();
+	//other infos
+	data.tel = faker.phone.phoneNumber();
+	data.url = faker.internet.domainName();
+	data.claimed = !!Math.floor(Math.random() * Math.floor(2));
+	data.yelpingSince = faker.date.between('2005-01-01', '2017-01-01');
 
 	restaurants.push(data);
 });
 
-console.log(restaurants[0]);
+console.log(restaurants);
+// console.log(restaurants[0].ratings.yearly['2016'])
+// console.log(restaurants[0].ratings.yearly['2017'])
+// console.log(restaurants[0].ratings.yearly['2018'])

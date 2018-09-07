@@ -8,7 +8,9 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "pack": "webpack --mode production --watch"
+    "pack": "webpack --mode production --watch",
+    "seed": "node database/rawData.js",
+    "start": "nodemon server/index.js"
   },
   "dependencies": {},
   "devDependencies": {
@@ -20,10 +22,12 @@
     "body-parser": "^1.18.3",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "express": "^4.16.3",
+    "faker": "^4.1.0",
     "jquery": "^3.3.1",
     "mongoose": "^5.2.13",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
+    "underscore": "^1.9.1",
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0"
   }

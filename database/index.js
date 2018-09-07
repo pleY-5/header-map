@@ -1,14 +1,9 @@
 const mongoose = require('mongoose');
 let Promise = require('bluebird')
 mongoose.Promise = Promise;
-let restaurantsData = require('./rawData.js').restaurants;
+//let restaurantsData = require('./rawData.js').restaurants;
 
 mongoose.connect('mongodb://127.0.0.1:27017/yelpReactor', {useNewUrlParser: true });
-// var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'connection error:'));
-// db.once('open', function() {
-//   console.log('db connected')
-// });
 
 let restaurantSchema = mongoose.Schema({
   name: String,
@@ -44,6 +39,7 @@ let restaurantSchema = mongoose.Schema({
 
 let Restaurants = mongoose.model('Restaurants', restaurantSchema);
 
+//Saving data to mongodb
 // restaurantsData.forEach((restaurant) => {
 //   let res = new Restaurants(restaurant);
 //   res.save(() => {
@@ -51,15 +47,11 @@ let Restaurants = mongoose.model('Restaurants', restaurantSchema);
 //   });
 // });
 
+//Finding all data
 Restaurants.find((err, d)=>{
-  console.log(d)
-  count++
-})
-
-// var tes = [{name: 'Cherr', b: 'E'}, {name:'winds', a:'6'}];
-// 	var test = new Restaurants(tes[0]);
-// 	test.save(()=>{
-// 		Tests.find((data, d)=>{
-// 			console.log(data, d)
-// 		})
-// 	})
+  let count = 0;
+  d.forEach((res) => {
+    console.log(count, res)
+    count++
+  })
+});

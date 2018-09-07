@@ -226,7 +226,7 @@ restaurantName.forEach((res) => {
 	//adding ratings amount & current rating
 	data.ratings.amount = data.ratings.stars['5'] + data.ratings.stars['4'] + data.ratings.stars['3'] + data.ratings.stars['2'] + data.ratings.stars['1']; 
 	data.ratings.current = Math.floor(((data.ratings.stars['5']*5 + data.ratings.stars['4']*4 + data.ratings.stars['3']*3 + data.ratings.stars['2']*2 + data.ratings.stars['1'])/data.ratings.amount)*2);
-	//adding 2017 and 2018(- 9,10,11,12) monthly ratings
+	//adding 2017 and 2018(- 9,10,11,12 months) monthly ratings
 	data.ratings.yearly['2017'] = getRandomRatings(data.ratings.yearly['2016'][data.ratings.yearly['2016'].length-1]);
 	data.ratings.yearly['2018'] = getRandomRatings(data.ratings.yearly['2017'][data.ratings.yearly['2017'].length-1]);
 	data.ratings.yearly['2018'][9] = null;
@@ -260,7 +260,9 @@ restaurantName.forEach((res) => {
 	restaurants.push(data);
 });
 
-console.log(restaurants);
+//console.log(restaurants);
 // console.log(restaurants[0].ratings.yearly['2016'])
 // console.log(restaurants[0].ratings.yearly['2017'])
 // console.log(restaurants[0].ratings.yearly['2018'])
+
+//exports.restaurants = restaurants;

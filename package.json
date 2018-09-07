@@ -8,7 +8,8 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "pack": "webpack --mode production --watch"
+    "pack": "webpack --mode production --watch",
+    "seed": "node database/rawData.js"
   },
   "dependencies": {},
   "devDependencies": {

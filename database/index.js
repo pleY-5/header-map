@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 let Promise = require('bluebird')
 mongoose.Promise = Promise;
-//let restaurantsData = require('./rawData.js').restaurants;
 
 mongoose.connect('mongodb://127.0.0.1:27017/yelpReactor', {useNewUrlParser: true });
 
@@ -38,14 +37,6 @@ let restaurantSchema = mongoose.Schema({
 });
 
 let Restaurants = mongoose.model('Restaurants', restaurantSchema);
-
-//Saving data to mongodb
-// restaurantsData.forEach((restaurant) => {
-//   let res = new Restaurants(restaurant);
-//   res.save(() => {
-    
-//   });
-// });
 
 //Finding all data
 Restaurants.find((err, d)=>{

@@ -9,7 +9,8 @@
   },
   "scripts": {
     "pack": "webpack --mode production --watch",
-    "seed": "node database/rawData.js"
+    "seed": "node database/rawData.js",
+    "start": "nodemon server/index.js"
   },
   "dependencies": {},
   "devDependencies": {

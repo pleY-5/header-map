@@ -309,7 +309,7 @@ let restaurantSchema = mongoose.Schema({
 let Restaurants = mongoose.model('Restaurants', restaurantSchema);
 
 //Saving data to mongodb
-restaurantsData.forEach((restaurant) => {
-  let res = new Restaurants(restaurant);
-  res.save();
-});
+// restaurantsData.forEach((restaurant) => {
+//   let res = new Restaurants(restaurant);
+//   res.save();
+// });

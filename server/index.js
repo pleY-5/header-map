@@ -1,17 +1,17 @@
 const express = require('express');
 let app = express();
 const bodyParser = require('body-parser');
+let getRestaurants = require('../database/index.js').getRestaurants;
 
 app.use(express.static('./client/dist'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.post('/repos', function (req, res) {
-  
-});
-
-app.get('/repos', function (req, res) {
-
+app.get('/res', function (req, res) {
+	let resName = Object.keys(req.query)[0];
+	getRestaurants(resName, (err, data)=>{
+		res.send(JSON.stringify(data[0]));
+	})
 });
 
 let port = 7763;

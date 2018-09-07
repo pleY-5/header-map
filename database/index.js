@@ -39,10 +39,14 @@ let restaurantSchema = mongoose.Schema({
 let Restaurants = mongoose.model('Restaurants', restaurantSchema);
 
 //Finding all data
-Restaurants.find((err, d)=>{
-  let count = 0;
-  d.forEach((res) => {
-    console.log(count, res)
-    count++
-  })
-});
+let getRestaurants = (resName, callback) => {
+  Restaurants.find({name: resName}, (err, d)=>{
+    if(err){
+      callback(err, null);
+    } else {
+      callback(null, d);
+    }
+  });
+}
+
+exports.getRestaurants = getRestaurants;

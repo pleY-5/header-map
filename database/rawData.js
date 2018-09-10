@@ -268,7 +268,7 @@ restaurantName.forEach((res) => {
 //exports.restaurants = restaurants;
 
 const mongoose = require('mongoose');
-let Promise = require('bluebird')
+let Promise = require('bluebird');
 mongoose.Promise = Promise;
 let restaurantsData = restaurants;
 

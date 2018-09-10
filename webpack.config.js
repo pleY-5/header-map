@@ -8,11 +8,16 @@ module.exports = {
         loader: 'babel-loader',
         query: {
           presets: ['@babel/preset-env', '@babel/preset-react'],
+          env: {
+            test: {
+              presets: [['@babel/preset-env'], '@babel/preset-react']
+            }
+          }
         }
       }
     ]
   },
-   output: {
+  output: {
     filename: 'bundle.js',
     path: __dirname + '/client/dist'
   }

@@ -12,7 +12,9 @@
     "seed": "node database/rawData.js",
     "start": "nodemon server/index.js"
   },
-  "dependencies": {},
+  "dependencies": {
+    "eslint": "^5.5.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.0.0",

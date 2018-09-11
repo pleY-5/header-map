@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import _ from 'underscore';
 
-class Header extends React.Component {
+export default class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -151,8 +151,3 @@ class Header extends React.Component {
     </div>);
   }
 }
-
-ReactDOM.render(
-  <Header />,
-  document.getElementById('app')
-);

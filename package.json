@@ -35,7 +35,7 @@
     "pack": "webpack --mode production --watch",
     "seed": "node database/rawData.js",
     "start": "nodemon server/index.js",
-    "test": "jest --coverage --watch --verbose"
+    "test": "jest --coverage --verbose"
   },
   "dependencies": {
     "eslint": "^5.5.0"

@@ -9,10 +9,10 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/res', function (req, res) {
-	let resName = Object.values(req.query)[0];
-	getRestaurants(resName, (err, data)=>{
-		res.send(JSON.stringify(data[0]));
-	});
+  let resName = Object.values(req.query)[0];
+  getRestaurants(resName, (err, data)=>{
+    res.send(JSON.stringify(data[0]));
+  });
 });
 
 let port = 7763;

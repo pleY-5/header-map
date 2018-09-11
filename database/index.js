@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-let Promise = require('bluebird')
+let Promise = require('bluebird');
 mongoose.Promise = Promise;
 
 mongoose.connect('mongodb://127.0.0.1:27017/yelpReactor', {useNewUrlParser: true });
@@ -14,11 +14,11 @@ let restaurantSchema = mongoose.Schema({
     }, 
     current: Number, 
     stars: {
-    	1:Number,
-    	2:Number,
-    	3:Number,
-    	4:Number,
-    	5:Number
+      1: Number,
+      2: Number,
+      3: Number,
+      4: Number,
+      5: Number
     },
     amount: Number
   },
@@ -41,7 +41,7 @@ let Restaurants = mongoose.model('Restaurants', restaurantSchema);
 //Finding all data
 let getRestaurants = (resName, callback) => {
   Restaurants.find({name: resName}, (err, d)=>{
-    if(err){
+    if (err) {
       callback(err, null);
     } else {
       callback(null, d);

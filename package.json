@@ -2,6 +2,10 @@
   "name": "",
   "jest": {
     "verbose": true,
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
     "coverageThreshold": {
       "./client/src": {
         "branches": 20,
@@ -21,7 +25,8 @@
     "unmockedModulePathPatterns": [
       "react",
       "enzyme",
-      "jest-enzyme"
+      "jest-enzyme",
+      "css-loader"
     ]
   },
   "version": "",
@@ -49,11 +54,13 @@
     "babel-loader": "^8.0.2",
     "bluebird": "^3.5.2",
     "body-parser": "^1.18.3",
+    "css-loader": "^1.0.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
     "express": "^4.16.3",
     "faker": "^4.1.0",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^23.6.0",
     "jest-enzyme": "^6.0.4",
     "jquery": "^3.3.1",
@@ -61,9 +68,9 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "regenerator-runtime": "^0.12.1",
+    "style-loader": "^0.23.0",
     "underscore": "^1.9.1",
     "webpack": "^4.17.2",
     "webpack-cli": "^3.1.0"
   }
-  
 }

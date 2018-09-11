@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import _ from 'underscore';
+import styles from '../dist/main.css';
 
 export default class Header extends React.Component {
   constructor(props) {
@@ -88,19 +88,19 @@ export default class Header extends React.Component {
   }
 
   render() {
-    return (<div id="header">
-      <div id="headerContainer">
-        <div id="mainContainer">
-          <div id="part1"><h1>{this.state.name}</h1><div>{this.state.claimed}</div></div>
-          <div id="part2">
+    return (<div id="header" className={styles.header}>
+      <div className={styles.headerContainer}>
+        <div className={styles.mainContainer}>
+          <div className={styles.part1}><h1>{this.state.name}</h1><div>{this.state.claimed}</div></div>
+          <div className={styles.part2}>
             <div>Stars: {this.state.ratings.current/2}</div>
             <div>{this.state.ratings.amount} reviews</div>
             <button onClick={this.showRatings.bind(this)}>Details</button>
             <div>{!!(this.state.showDetails) ?
-              <div id="modal" >
-                <div id="ratings">
-                  <div id="btnContainer">
-                    <button onClick={this.close.bind(this)} class="close">&times;</button>
+              <div id="modal" className={styles.modal} >
+                <div className={styles.ratings}>
+                  <div className={styles.btnContainer}>
+                    <button onClick={this.close.bind(this)} className={styles.close}>&times;</button>
                   </div>
                   <h1>Rating Details</h1>
                   <div>Monthly Trend
@@ -118,7 +118,7 @@ export default class Header extends React.Component {
               </div> : null
             }</div>
           </div>
-          <div id="part3">
+          <div className={styles.part3}>
             <div>{this.state.dollars}</div>
             <div>{_.map(this.state.categories, (category)=> {
               return category.specific;
@@ -126,19 +126,19 @@ export default class Header extends React.Component {
             <button>edit</button>
           </div>
         </div>
-        <div id="sideModules">
-          <button id="WAR">Write a Review</button>
-          <button id="add-photo">Add Photo</button>
+        <div className={styles.sideModules}>
+          <button className={styles.WAR}>Write a Review</button>
+          <button className={styles.addPhoto}>Add Photo</button>
           <button>Share</button>
           <button>Save</button>
         </div>
       </div>
       <h1>Testing</h1>
       <form>
-        <input type="text" id="input" onChange={(e)=> { this.setState({input: e.target.value})}} />
+        <input type="text" className={styles.input} onChange={(e)=> { this.setState({input: e.target.value})}} />
         <input type="submit" onClick={this.changeRestaurant.bind(this)} />
       </form>
-      <div id="tempMap">Map Data
+      <div className={styles.tempMap}>Map Data
         <div>{this.state.address}</div>
         <div>{this.state.city}</div>
         <div>{this.state.state}</div>

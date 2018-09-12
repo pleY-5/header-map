@@ -5,6 +5,6 @@ import Header from '../client/src';
 describe('The main app', () => {
   it('the app should have text', () => {
     const app = shallow(<Header/>);
-    expect(app.contains(<div>Minhas Micro Brewery</div>)).toBe(true);
+    expect(app.contains(<div>Claimed</div>)).toBe(true);
   });
 });

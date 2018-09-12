@@ -106,7 +106,9 @@ export default class Header extends React.Component {
         <div className={styles.mainContainer}>
           <div className={styles.part1}>
             <h1 className={styles.name}>{this.state.name}</h1>
-            <div>{this.state.claimed ? 'Claimed' : 'Unclaimed'}</div>
+            <div>
+              {this.state.claimed ? <div><img src="icons/claimed.png" width="14px" height="14px"/>Claimed</div> : <div><img src="icons/unclaimed.png" width="14px" height="14px"/>Unclaimed</div>}
+            </div>
           </div>
           <RatingsCont ratings={this.state.ratings} showRatings={this.showRatings} showDetails={this.state.showDetails} yelpingSince={this.state.yelpingSince} close={this.close} />
           <Cate dollars={this.state.dollars} categories={this.state.categories} />

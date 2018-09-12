@@ -10,9 +10,9 @@ export default class RatingsCont extends React.Component {
   render() {
     return (
       <div className={styles.part2}>
-        <div>Stars: {this.props.ratings.current / 2}</div>
+        <div className={styles['stars' + this.props.ratings.current] + ' ' + styles.stars}></div>
         <div>{this.props.ratings.amount} reviews</div>
-        <button onClick={this.props.showRatings}>Details</button>
+        <button onClick={this.props.showRatings}><img src="icons/stats.png" width="14px" height="14px"/>Details</button>
         <div>
           {this.props.showDetails ?
             <Ratings close={this.props.close} yelpingSince={this.props.yelpingSince} ratings={this.props.ratings}/> : null

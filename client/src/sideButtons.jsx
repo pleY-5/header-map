@@ -46,7 +46,7 @@ export default class Buttons extends React.Component {
   render() {
     return (
       <div className={styles.sideModules}>
-        <button className={styles.WAR}>Write a Review</button>
+        <a className={styles.WAR}><img src="icons/star.png" height="20px" width="20px" /><div>Write a Review</div></a>
         <button className={styles.addPhoto}><img src="icons/picture.png" width="14px" height="14px"/>Add Photo</button>
         <button className={styles.share} onClick={this.share}><img src="icons/share.png" width="14px" height="14px"/>Share</button>
         <button className={styles.save} onClick={this.save}><img src="icons/save.png" width="14px" height="14px"/>Save</button>

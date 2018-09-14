@@ -106,8 +106,8 @@ export default class Header extends React.Component {
         <div className={styles.mainContainer}>
           <div className={styles.part1}>
             <h1 className={styles.name}>{this.state.name}</h1>
-            <div>
-              {this.state.claimed ? <div><img src="icons/claimed.png" width="14px" height="14px"/>Claimed</div> : <div><img src="icons/unclaimed.png" width="14px" height="14px"/>Unclaimed</div>}
+            <div className={styles.claimed}>
+              {this.state.claimed ? <div className={styles.claim} ><img className={styles.claimImage} src="icons/claimed.png" width="18px" height="20px"/>Claimed</div> : <div><img src="icons/unclaimed.png" width="18px" height="20px"/>Unclaimed</div>}
             </div>
           </div>
           <RatingsCont ratings={this.state.ratings} showRatings={this.showRatings} showDetails={this.state.showDetails} yelpingSince={this.state.yelpingSince} close={this.close} />
@@ -115,6 +115,7 @@ export default class Header extends React.Component {
         </div>
         <Buttons />
       </div>
+      <img src="icons/template.png" width="960px" height="112px"/>
       <Testing changeRestaurant={this.changeRestaurant.bind(this)} getRes={this.getRes}/>
       <Map address={this.state.address} city={this.state.city} state={this.state.state} postalCode={this.state.postalCode} latitude={this.state.latitude} longitude={this.state.longitude} tel={this.state.tel} url={this.state.url} />
     </div>);

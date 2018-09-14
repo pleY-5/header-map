@@ -31,13 +31,13 @@ export default class Cate extends React.Component {
   render() {
     return (
       <div className={styles.part3}>
-        <div>{this.props.dollars === 1 ? '$ ' : this.props.dollars === 2 ? '$$ ' : '$$$ '}&#183;</div>
+        <div className={styles.dollars}>{this.props.dollars === 1 ? '$ ' : this.props.dollars === 2 ? '$$ ' : '$$$ '}&#183;</div>
         <div className={styles.categories} >{
           _.map(this.props.categories, (category, i, cate)=> {
-            return i === cate.length - 1 ? <div>{category.specific }</div> : <div>{category.specific + ','}</div>;
+            return i === cate.length - 1 ? <a>{category.specific }</a> : <a>{category.specific + ','}</a>;
           })
         }</div>
-        <button className={styles.editBtn} onClick={this.edit.bind(this)} ><img src="icons/edit.png" width="14px" height="14px"/>edit</button>
+        <a className={styles.editBtn} onClick={this.edit.bind(this)} ><div className={styles.edit} ></div><div className={styles.text}>Edit</div></a>
         { this.state.edit ? 
           <EditCate /> : null
         }

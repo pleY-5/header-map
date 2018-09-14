@@ -12,7 +12,7 @@ export default class RatingsCont extends React.Component {
       <div className={styles.part2}>
         <div className={styles['stars' + this.props.ratings.current] + ' ' + styles.stars}></div>
         <div>{this.props.ratings.amount} reviews</div>
-        <a className={styles.rateBtn} onClick={this.props.showRatings}><img src="icons/stats.png" width="14px" height="14px"/>Details</a>
+        <a className={styles.rateBtn} onClick={this.props.showRatings}><div className={styles.stats}> </div><div className={styles.text}>Details</div></a>
         <div>
           {this.props.showDetails ?
             <Ratings close={this.props.close} yelpingSince={this.props.yelpingSince} ratings={this.props.ratings}/> : null

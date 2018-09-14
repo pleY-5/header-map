@@ -47,9 +47,11 @@ export default class Buttons extends React.Component {
     return (
       <div className={styles.sideModules}>
         <a className={styles.WAR}><img src="icons/star.png" height="20px" width="20px" /><div>Write a Review</div></a>
-        <button className={styles.addPhoto}><img src="icons/picture.png" width="14px" height="14px"/>Add Photo</button>
-        <button className={styles.share} onClick={this.share}><img src="icons/share.png" width="14px" height="14px"/>Share</button>
-        <button className={styles.save} onClick={this.save}><img src="icons/save.png" width="14px" height="14px"/>Save</button>
+        <span className={styles.btns}>
+          <a className={styles.addPhoto}><img src="icons/picture.png" width="20px" height="15px"/><div className={styles.photo}>Add Photo</div></a>
+          <a className={styles.share} onClick={this.share}><img src="icons/share.png" width="18px" height="18px"/><div className={styles.sha}>Share</div></a>
+          <a className={styles.save} onClick={this.save}><img src="icons/save.png" width="13px" height="17.5px"/><div className={styles.sa}>Save</div></a>
+        </span>
         <div>
           { this.state.share ? 
             <Share /> : null

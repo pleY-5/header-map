@@ -33,6 +33,7 @@ export default class Header extends React.Component {
     this.getRes = this.getRes.bind(this);
     this.showRatings = this.showRatings.bind(this);
     this.close = this.close.bind(this);
+    this.changeCate = this.changeCate.bind(this);
   }
 
   componentDidMount() {
@@ -44,6 +45,22 @@ export default class Header extends React.Component {
         });
       }
     });
+
+    //prevent Enter fromt submitting form/input
+    const node = document.getElementsByTagName('form')[0];
+    const addEvent = node.addEventListener;
+    addEvent('keypress', this.handleKeyPress, false);
+  }
+  
+  componentWillUnmount() {
+    const removeEvent = node.removeEventListener;
+    removeEvent('keypress', this.handleKeyPress);
+  }
+
+  handleKeyPress(event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+    }
   }
 
   getData() {
@@ -100,6 +117,12 @@ export default class Header extends React.Component {
     });
   }
 
+  changeCate(arr) {
+    this.setState({
+      categories: arr
+    });
+  }
+
   render() {
     return (<div id="header" className={styles.header}>
       <div className={styles.headerContainer}>
@@ -111,7 +134,7 @@ export default class Header extends React.Component {
             </div>
           </div>
           <RatingsCont ratings={this.state.ratings} showRatings={this.showRatings} showDetails={this.state.showDetails} yelpingSince={this.state.yelpingSince} close={this.close} />
-          <Cate dollars={this.state.dollars} categories={this.state.categories} />
+          <Cate dollars={this.state.dollars} categories={this.state.categories} changeCate={this.changeCate}/>
         </div>
         <Buttons />
       </div>

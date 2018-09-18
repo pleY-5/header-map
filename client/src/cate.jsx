@@ -41,7 +41,7 @@ export default class Cate extends React.Component {
         }</div>
         <a className={styles.editBtn} onClick={this.edit.bind(this)} ><div className={styles.edit} ></div><div className={styles.text}>Edit</div></a>
         { this.state.edit ? 
-          <EditCate close={this.edit}/> : null
+          <EditCate close={this.edit} categories={this.props.categories} changeCate={this.props.changeCate}/> : null
         }
       </div>
     );

@@ -1023,8 +1023,10 @@ ul {
 	font-weight: 700;
 	line-height: 21px;
 	vertical-align: middle;
-	justify-content: space-between;
 	margin-top: 4px;
+	text-align: center;
+	align-items: center;
+	justify-content: center;
 }
 
 select {
@@ -1357,7 +1359,7 @@ small {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 14px;
 	height: 32px;
-	width: 399px;
+	width: 316px;
 	line-height: 18px;
 	padding: 12px 54px 12px 12px;
 	text-align: left;
@@ -1375,4 +1377,137 @@ small {
 	font-size: 21px;
 	font-weight: 700;
 	margin-bottom: 6px;
+}
+
+.editBody {
+	width: 358px;
+	height: 137px;
+	padding: 18px 12px;
+}
+
+.cateCC {
+	display: flex;
+	flex-direction: column;
+}
+
+.editBodyLabel {
+	width: 165px;
+	height: 17px;
+	font-size: 14px;
+	font-weight: 700;
+	vertical-align: baseline;
+	margin-bottom: 6px;
+}
+
+.editBodySpan {
+	width: 358px;
+	height: 18px;
+	font-size: 12px;
+	color: rgb(153, 153, 153);
+	font-weight: 400;
+	margin-top: -6px;
+	margin-bottom: 3px;
+}
+
+.catePicker {
+	width: 358px;
+	height: 84px;
+	margin-bottom: 12px;
+}
+
+.cateRendered {
+	display: flex;
+	width: 358px;
+	height: 23.9px;
+	margin: 6px 0;
+	font-size: 14px;
+	line-height: 20px;
+	vertical-align: middle;
+	flex-direction: row;
+}
+
+.cateRendered > div {
+	height: 20;
+	width: auto;
+	margin-top: 3px;
+}
+
+.removeCate {
+	margin-left: 12px;
+	color: rgb(0, 115, 187);
+	font-size: 12px;
+	cursor: pointer;
+	text-decoration-color: rgb(0, 115, 187);
+	text-decoration-style: solid;
+	margin-top: 3px;
+}
+
+.removeCate:hover {
+	text-decoration: underline;
+}
+
+.cateEdit {
+	width: 358px;
+	height: 17px;
+	font-size: 12px;
+	color: rgb(0, 115, 187);
+	cursor:	pointer;
+	text-decoration-color: rgb(0, 115, 187);
+	text-decoration-style: solid;
+}
+
+.cateEdit:hover {
+	text-decoration: underline;
+}
+
+.addCateInput {
+	width: 338px;
+	height: 18px;
+	padding: 5px 9px;
+	border: 1px solid rgb(153, 153, 153);
+	background-color: white;
+	border-radius: 3px;
+	font-size: 14px;
+}
+
+.cateFooter {
+	width: 358px;
+	height: 30px;
+	padding: 0 12px 12px 12px;
+}
+
+.cateFooter > div {
+	width: 358px;
+	height: 30px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.cateFooterBtn {
+	background-image: linear-gradient(rgb(217, 0, 7), rgb(201, 20, 0));
+	border: 1px solid rgb(141, 0, 5) !important;
+	padding: 5px 8px;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px 0px;
+	cursor: pointer;
+	font-size: 12px;
+	font-weight: 700;
+	color:white;
+	text-align: center;
+	width: 58.67px;
+	height: 30px;
+}
+
+.cateFooterCancel {
+	margin-left: 12px;
+	color: rgb(0, 115, 187);
+	font-size: 12px;
+	cursor: pointer;
+	text-decoration-color: rgb(0, 115, 187);
+	text-decoration-style: solid;
+	margin-top: 3px;
+}
+
+.cateFooterCancel:hover {
+	text-decoration: underline;
 }

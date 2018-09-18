@@ -154,7 +154,7 @@ export default class Save extends React.Component {
               </div>
             </div>
             <div className={styles.signBtnCont}>
-              <button className={styles.signUpBtn}>Sign Up</button>
+              <button className={styles.signUpBtn}><div>Sign Up</div></button>
             </div>
             <div className={styles.smallCont}>
               <small>Already on Yelp? Log in</small>

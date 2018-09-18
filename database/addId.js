@@ -40,27 +40,14 @@ let restaurantSchema = mongoose.Schema({
 
 let Restaurants = mongoose.model('Restaurants', restaurantSchema);
 
-//Finding all data
-let getRestaurantsById = (resId, callback) => {
-  let Id = parseInt(resId);
-  Restaurants.find({id: Id}, (err, d)=>{
-    if (err) {
-      callback(err, null);
-    } else {
-      callback(null, d);
-    }
-  });
-};
 
-let getRestaurantsByName = (resName, callback) => {
-  Restaurants.find({lName: resName}, (err, d)=>{
-    if (err) {
-      callback(err, null);
-    } else {
-      callback(null, d);
-    }
+const addEventTsField = () => {
+  Restaurants.find( (err, d) => {
+    d.forEach(function(doc) {
+      var lName = (doc.name).toLowerCase();
+      Restaurants.update({_id: doc._id}, { $set: {lName: lName}}, ()=> { Restaurants.find((err, d)=> { console.log(d); }); });
+    });
   });
-};
+}
 
-exports.getRestaurantsByName = getRestaurantsByName;
-exports.getRestaurantsById = getRestaurantsById;
+addEventTsField();

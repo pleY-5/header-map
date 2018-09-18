@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from '../dist/main.css';
+// import styles from '../dist/main.css';
+import styles from 'https://s3-us-west-1.amazonaws.com/yelp-reactor-header/main.css';
 import _ from 'underscore';
 
 export default class EditCate extends React.Component {
@@ -41,7 +42,7 @@ export default class EditCate extends React.Component {
     let amt = this.state.categoryAmt;
     for (let i = 0; i < 3; i++) {
       if (amt > 0) {
-        rendered.push(<div class={styles.cateRendered}><div>{this.props.categories[i].type}</div><img src="icons/rArrow.png" width="24px" height="24px" /><div>{this.props.categories[i].specific}</div><a id={i} onClick={this.removeCate.bind(this)} class={styles.removeCate}>Remove</a></div>);
+        rendered.push(<div class={styles.cateRendered}><div>{this.props.categories[i].type}</div><img src="https://s3-us-west-1.amazonaws.com/yelp-reactor-header/rArrow.png" width="24px" height="24px" /><div>{this.props.categories[i].specific}</div><a id={i} onClick={this.removeCate.bind(this)} class={styles.removeCate}>Remove</a></div>);
         amt--;
       } 
     }

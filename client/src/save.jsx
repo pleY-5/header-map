@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from '../dist/main.css';
+// import styles from '../dist/main.css';
+import styles from 'https://s3-us-west-1.amazonaws.com/yelp-reactor-header/main.css';
 
 export default class Save extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ export default class Save extends React.Component {
             <button className={styles.signFb}>
               <span>
                 <div className={styles.signFbInner}>
-                  <img src="icons/fb.png" width="24px" height="24px"></img>
+                  <img src="https://s3-us-west-1.amazonaws.com/yelp-reactor-header/fb.png" width="24px" height="24px"></img>
                   <div className={styles.signFbtext}> Sign Up with Facebook</div>
                 </div>
               </span>
@@ -28,7 +29,7 @@ export default class Save extends React.Component {
             <button className={styles.signGl}>
               <span>
                 <div className={styles.signGlInner}>
-                  <img src="icons/gl.png" width="24px" height="24px"></img>
+                  <img src="https://s3-us-west-1.amazonaws.com/yelp-reactor-header/gl.png" width="24px" height="24px"></img>
                   <div className={styles.signGltext}> Sign Up with Google</div>
                 </div>
               </span>

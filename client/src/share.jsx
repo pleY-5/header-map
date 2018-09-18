@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from '../dist/main.css';
+// import styles from '../dist/main.css';
+import styles from 'https://s3-us-west-1.amazonaws.com/yelp-reactor-header/main.css';
 
 export default class Share extends React.Component {
   constructor(props) {
@@ -13,8 +14,8 @@ export default class Share extends React.Component {
         <div className={styles.shareHeader}><h2>Share business</h2></div>
         <div className={styles.shareBody}>
           <div className={styles.shareMedia}>
-            <div className={styles.shareFb}><img src="icons/fb.png" width="25.5px" height="25.5px"></img><div className={styles.shareFbtext}>Share on Facebook</div></div>
-            <div className={styles.shareTw}><img src="icons/tw.png" width="21.5px" height="21.5px"></img><div className={styles.shareTwtext}>Share on Twitter</div></div>
+            <div className={styles.shareFb}><img src="https://s3-us-west-1.amazonaws.com/yelp-reactor-header/fb.png" width="25.5px" height="25.5px"></img><div className={styles.shareFbtext}>Share on Facebook</div></div>
+            <div className={styles.shareTw}><img src="https://s3-us-west-1.amazonaws.com/yelp-reactor-header/tw.png" width="21.5px" height="21.5px"></img><div className={styles.shareTwtext}>Share on Twitter</div></div>
           </div>
           <label className={styles.link}></label>
           <fieldset className={styles.shareOr}>

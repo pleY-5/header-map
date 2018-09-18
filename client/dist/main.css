@@ -1,8 +1,13 @@
-.header {
+.topContainer {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-content: center;
+	width: 960px;
+	height: 461px;
+	padding: 15px 15px 24px 15px;
+	margin: 0 auto;
+	margin-top: 104px;
 }
 
 .headerContainer {
@@ -13,7 +18,6 @@
 	flex-direction: row;
 	justify-content: space-between;
 	margin: 0 0 12px;
-	border: 2px solid red;
 }
 
 .mainContainer {
@@ -35,7 +39,7 @@
 	line-height: 21px;
 }
 
-.name {
+.sname {
 	display: flex;
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	font-size: 36px;
@@ -46,13 +50,19 @@
 	margin-block-start: 0;
 	align-self: flex-start;
 }
-.claim {
-	display: inline-flex;
-	align-items: flex-end;
-	align-self: flex-end;
-	flex-direction: row;
-	margin-left: 5px;
+
+.name {
+	display: flex;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 30px;
+	font-weight: 700;
+	height: 42px;
+	line-height: 42px;
+	margin-block-end: 6px;
+	margin-block-start: 0;
+	align-self: flex-start;
 }
+
 .claimed {
 	display: flex;
 	width: 72.359px;
@@ -63,11 +73,45 @@
 	padding-bottom: 3px;
 }
 
+.claim {
+	font-family: "Helvetica Neue", Helvetica;
+	font-size: 14px;
+	display: inline-flex;
+	align-items: flex-end;
+	align-self: flex-end;
+	flex-direction: row;
+	margin-left: 5px;
+}
+
 .claimImage {
 	display: inline-flex;
 	align-self: baseline;
 	margin-right: 3px;
 	border-radius: 50%;
+	margin-bottom: 4px;
+}
+
+.unclaim {
+	font-family: "Helvetica Neue", Helvetica;
+	font-size: 14px;
+	display: inline-flex;
+	align-items: flex-end;
+	align-self: flex-end;
+	flex-direction: row;
+	margin-left: 5px;
+	color: rgb(0, 115, 187);
+}
+
+.unclaim:hover {
+	text-decoration: underline;
+}
+
+.unclaimImg {
+	display: inline-flex;
+	align-self: baseline;
+	margin-right: 3px;
+	border-radius: 50%;
+	margin-bottom: 4px;
 }
 
 .part2 {
@@ -114,7 +158,7 @@
 	padding: 0 6px 0px 6px;
 	text-shadow: rgba(255, 255, 255, 0.7) 0px 1px 0px;
 	position: relative;
-	--stat: url("/icons/dimstats.png");
+	--stat: url("https://s3-us-west-1.amazonaws.com/yelp-reactor-header/dimstats.png");
 	--stat-size: 12.5px 12px;
 }
 
@@ -122,7 +166,7 @@
 	color: black;
 	background-image: linear-gradient(rgb(255, 255, 255), rgb(247, 247, 247));
 	box-shadow: rgba(0, 0, 0, 0.1) 0/5px 1px 1px 0.5px;
-	--stat: url("/icons/stats.png");
+	--stat: url("https://s3-us-west-1.amazonaws.com/yelp-reactor-header/stats.png");
 	--stat-size: 12px 11.5px;
 }
 
@@ -199,14 +243,14 @@
 	padding: 0 6px 0px 6px;
 	text-shadow: rgba(255, 255, 255, 0.7) 0px 1px 0px;
 	position: relative;
-	--pen: url("/icons/dimedit.png");
+	--pen: url("https://s3-us-west-1.amazonaws.com/yelp-reactor-header/dimedit.png");
 }
 
 .editBtn:hover {
 	color: black;
 	background-image: linear-gradient(rgb(255, 255, 255), rgb(247, 247, 247));
 	box-shadow: rgba(0, 0, 0, 0.1) 0/5px 1px 1px 0.5px;
-	--pen: url("/icons/edit.png");
+	--pen: url("https://s3-us-west-1.amazonaws.com/yelp-reactor-header/edit.png");
 }
 
 
@@ -387,16 +431,6 @@
 	margin-top: 3px;
 	text-align: left;
 	flex-wrap: wrap;
-}
-
-.tempMap {
-	display: flex;
-	font-size: 17px;
-	flex-direction: column;
-	font-weight: bold;
-}
-.tempMap > div {
-	font-weight: normal;
 }
 
 /* ratings modals */
@@ -620,7 +654,7 @@ button {
 .stars {
 	display: block;
 	background-size: 132px 560px;
-	background-image: url('/icons/stars.png');
+	background-image: url('https://s3-us-west-1.amazonaws.com/yelp-reactor-header/stars.png');
 	background-position-x: 0px;
 	background-position-y: 0px;
 	width: 132px;
@@ -1510,4 +1544,108 @@ small {
 
 .cateFooterCancel:hover {
 	text-decoration: underline;
+}
+
+.subHeader {
+	width: 960px;
+	height: 336px;
+	display : table;
+}
+
+/* map modal */
+
+.mapContainer{
+	width: 288px;
+	max-height: 345px;
+	min-height: 310px;
+	padding: 5px;
+	border: 1px solid rgb(204, 204, 204);
+	font-size: 14px;
+	float: left;
+}
+
+.map {
+	width: 286px;
+	height: 135px;
+	border: 1px solid rgb(204, 204, 204);
+}
+
+.mapBody {
+	width: 288px;
+	max-height: 198px;
+	min-height: 105px;
+	margin: 5px;
+}
+
+.mapInfo {
+	padding: 0;
+	margin: 0;
+}
+
+.addd {
+	display: flex;
+	flex-direction: row;
+	width: 278px;
+	max-height: 72px;
+	margin-bottom: 3px;
+}
+
+.addressInfo {
+	display: flex;
+	flex-direction: row;
+	margin-left: 24px;
+	width: 254px;
+	max-height: 72px;
+	min-height: 36px;
+}
+
+.address {
+	font-family: "Helvetica Neue", Helvetica;
+	font-size: 14px;
+	font-weight: 700;
+	font-style: normal;
+	position: absolute;
+}
+
+.mapImg {
+	position: absolute;
+}
+
+.mapEdit {
+	font-family: "Helvetica Neue", Helvetica;
+	float: right;
+	color: rgb(0, 115, 187);
+	cursor: pointer;
+	font-size: 12px;
+	display: flex;
+	flex-direction: row;
+}
+
+.mapEdit:hover {
+	text-decoration: underline;
+}
+
+.tell {
+	font-size: 14px;
+	margin-left: 4px;
+}
+
+.highlight {
+	font-family: Helvetica;
+	color: rgb(0, 115, 187);
+	cursor: pointer;
+	font-size: 14px;
+	margin-left: 4px;
+	
+}
+
+.highlight:hover {
+	text-decoration: underline;
+}
+
+.moveInfo {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 20px;
 }

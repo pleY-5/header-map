@@ -1,8 +1,8 @@
 import React from 'react';
 import $ from 'jquery';
 import _ from 'underscore';
-import styles from '../dist/main.css';
-import Testing from './testing.jsx';
+// import styles from '../dist/main.css';
+import styles from 'https://s3-us-west-1.amazonaws.com/yelp-reactor-header/main.css';
 import Map from './map.jsx';
 import Cate from './cate.jsx';
 import RatingsCont from './ratingsCont.jsx';
@@ -12,7 +12,7 @@ export default class Header extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: 'Minhas Micro Brewery',
+      name: 'Yelp Restaurant',
       restaurant: '',
       categories: [],
       ratings: {},
@@ -28,7 +28,8 @@ export default class Header extends React.Component {
       url: '',
       yelpingSince: '',
       input: '',
-      showDetails: false
+      showDetails: false, 
+      shortEnough: false
     };
     this.getRes = this.getRes.bind(this);
     this.showRatings = this.showRatings.bind(this);
@@ -64,10 +65,12 @@ export default class Header extends React.Component {
   }
 
   getData() {
-    var name = {data: this.state.name};
-    $.get('/res', name, (response)=> {
-      console.log(`get request success to "/res" with restaurant name: ${name} data: `, response);
+    var id = window.location.pathname;
+    id = id.substring(1, id.length - 1).toLowerCase();
+    $.get(`/${id}/res`, id, (response)=> {
+      console.log(`get request success to "/res" with restaurant name: ${id} data: `, response);
       this.setState({
+        name: response.name,
         restaurant: response,
         categories: response.categories,
         ratings: response.ratings,
@@ -82,6 +85,12 @@ export default class Header extends React.Component {
         tel: response.tel,
         url: response.url,
         yelpingSince: response.yelpingSince
+      }, () => {
+        if (this.state.name.length < 20) {
+          this.setState({
+            shortEnough: true
+          });
+        }
       });
     }, 'json');
   }
@@ -90,16 +99,6 @@ export default class Header extends React.Component {
     e.preventDefault();
     this.setState({
       input: e.target.value
-    });
-  }
-
-  changeRestaurant(e) {
-    e.preventDefault();
-    let res = this.state.input;
-    this.setState({
-      name: res
-    }, () => {
-      this.getData();
     });
   }
 
@@ -124,13 +123,17 @@ export default class Header extends React.Component {
   }
 
   render() {
-    return (<div id="header" className={styles.header}>
+    return (<div id="header" className={styles.topContainer}>
+      <form type="hidden" />
       <div className={styles.headerContainer}>
         <div className={styles.mainContainer}>
           <div className={styles.part1}>
-            <h1 className={styles.name}>{this.state.name}</h1>
+            { this.state.shortEnough ? 
+              <h1 className={styles.sname}>{this.state.name}</h1> :
+              <h1 className={styles.name}>{this.state.name}</h1>
+            }
             <div className={styles.claimed}>
-              {this.state.claimed ? <div className={styles.claim} ><img className={styles.claimImage} src="icons/claimed.png" width="18px" height="20px"/>Claimed</div> : <div><img src="icons/unclaimed.png" width="18px" height="20px"/>Unclaimed</div>}
+              {this.state.claimed ? <div className={styles.claim} ><img className={styles.claimImage} src="https://s3-us-west-1.amazonaws.com/yelp-reactor-header/claimed.png" width="18px" height="20px"/>Claimed</div> : <div className={styles.unclaim}><img className={styles.unclaimImg} src="https://s3-us-west-1.amazonaws.com/yelp-reactor-header/unclaimed.png" width="18px" height="18px"/>Unclaimed</div>}
             </div>
           </div>
           <RatingsCont ratings={this.state.ratings} showRatings={this.showRatings} showDetails={this.state.showDetails} yelpingSince={this.state.yelpingSince} close={this.close} />
@@ -138,9 +141,9 @@ export default class Header extends React.Component {
         </div>
         <Buttons />
       </div>
-      <img src="icons/template.png" width="960px" height="112px"/>
-      <Testing changeRestaurant={this.changeRestaurant.bind(this)} getRes={this.getRes}/>
-      <Map address={this.state.address} city={this.state.city} state={this.state.state} postalCode={this.state.postalCode} latitude={this.state.latitude} longitude={this.state.longitude} tel={this.state.tel} url={this.state.url} />
+      <div className={styles.subHeader}>
+        <Map address={this.state.address} city={this.state.city} state={this.state.state} postalCode={this.state.postalCode} latitude={this.state.latitude} longitude={this.state.longitude} tel={this.state.tel} url={this.state.url} />
+      </div>
     </div>);
   }
 }

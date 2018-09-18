@@ -8,12 +8,13 @@ export default class EditCate extends React.Component {
 
   render() {
     return (<div id="edit" className={styles.modal}>
-      <div className={styles.ratings}>
-        <h1>Edit</h1>
-        <div>Edit
-          <button>edit</button>
-          <button>edit</button>
-          <button>edit</button>
+      <div className={styles.editCont}>
+        <div className={styles.editHeader}>
+          <div onClick={this.props.close} className={styles.close}>&times;</div>
+          <h2>Add or remove categories</h2>
+        </div>
+        <div className={styles.editBody}>
+        
         </div>
       </div>
     </div>);

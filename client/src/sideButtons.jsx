@@ -31,15 +31,17 @@ export default class Buttons extends React.Component {
 
   share(e) {
     e.preventDefault();
+    let sharee = !this.state.share; 
     this.setState({
-      share: true
+      share: sharee
     });
   }
 
   save(e) {
     e.preventDefault();
+    let savee = !this.state.save;
     this.setState({
-      save: true
+      save: savee
     });
   }
 
@@ -50,14 +52,14 @@ export default class Buttons extends React.Component {
         <span className={styles.btns}>
           <a className={styles.addPhoto}><img src="icons/picture.png" width="20px" height="15px"/><div className={styles.photo}>Add Photo</div></a>
           <a className={styles.share} onClick={this.share}><img src="icons/share.png" width="18px" height="18px"/><div className={styles.sha}>Share</div></a>
-          <a className={styles.save} onClick={this.save}><img src="icons/save.png" width="13px" height="17.5px"/><div className={styles.sa}>Save</div></a>
+          <a className={styles.saveBtn} onClick={this.save}><img src="icons/save.png" width="13px" height="17.5px"/><div className={styles.sa}>Save</div></a>
         </span>
         <div>
           { this.state.share ? 
-            <Share /> : null
+            <Share close={this.share}/> : null
           }
           { this.state.save ? 
-            <Save /> : null
+            <Save close={this.save}/> : null
           }
         </div>
       </div>

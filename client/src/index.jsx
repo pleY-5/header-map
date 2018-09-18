@@ -41,7 +41,7 @@ export default class Header extends React.Component {
       if (e.target === document.getElementById('modal')) {
         this.setState({
           showDetails: false
-        } );
+        });
       }
     });
   }

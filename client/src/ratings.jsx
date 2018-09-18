@@ -18,9 +18,19 @@ export default class Ratings extends React.Component {
                 <div className={styles.rateMidHeader}>
                   <p>Monthly Trend</p>
                   <div className={styles.rateMidYears}>
-                    <button>2018</button>
-                    <button>2017</button>
-                    <button>2016</button>
+                    <div className={styles.rateYrCont}>
+                      <ul className={styles.rateTable}>
+                        <li className={styles.rateCell}>
+                          <a>2018</a>
+                        </li>
+                        <li className={styles.rateCell}>
+                          <a>2017</a>
+                        </li>
+                        <li className={styles.rateCell}>
+                          <a>2016</a>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>

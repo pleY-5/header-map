@@ -354,7 +354,7 @@
 	margin-top: 3px;
 }
 
-.save {
+.saveBtn {
 	display: inline-block;
 	justify-content: left; 
 	background-size: auto;
@@ -377,7 +377,7 @@
 	padding: 3px 7.5px 7px 7.5px;
 }
 
-.save > img {
+.saveBtn > img {
 	float: left;
 	margin-right: 1.3px
 }
@@ -539,6 +539,7 @@
     vertical-align: baseline;
 	margin-bottom: 11px;
 	border-bottom: 1px solid #e6e6e6;
+	font-weight: 700 !important;
 	text-align: left;
 	user-select: text;
 }
@@ -557,14 +558,55 @@
 	height: 35px;
 	width: 324px;
 	font-size: 14px;
-	font-weight: 400;
 	margin-block-end: 12px;
 }
 
 .rateMidYears {
-	display: flex;
+	display: table-cell;
 	flex-direction: row;
 	color: black;
+	width: 168px;
+	max-height: 38px;
+}
+
+.rateYrCont {
+	display: block;
+}
+
+.rateTable {
+	display: table;
+	margin: 0 0 -1px;
+    padding: 0;
+    list-style: none;
+    white-space: nowrap;
+	margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+	padding-inline-start: 40px;
+	list-style-position: outside;
+	list-style-type: none;
+}
+
+.rateCell {
+	display: table-cell;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+}
+
+.rateCell > a {
+	color: #333;
+    text-decoration: none;
+	border-bottom-color: #d32323;
+	outline: 0;
+	padding: 0 12px;
+    border-top: 3px solid transparent;
+	border-bottom: 3px solid transparent;
+	display: block;
+    vertical-align: bottom;
+    line-height: 1;
+    white-space: nowrap;
 }
 
 button {
@@ -638,26 +680,699 @@ button {
     left: 0;
 }
 
-.shareCont {
-	display: block;
-    position: absolute;
-    left: 274px;
-	top: 127px;
-	z-index: 1052;
-	max-width: 95%;
 
+
+/* save modal */
+
+.saveContainer {
+	max-width: 540px;
+	position: relative;
+    display: inline-block;
+	width: 95%;
+	max-height: 95%;
+	height: 721px;
+    overflow-y: auto;
+	vertical-align: middle;
+	user-select: text;
+	box-sizing: border-box;
+	margin: 0;
+    padding: 0;
+	border: 0;
+	align-self: center;
 }
 
-.shareModal {
-	width: 465px;
+.save {
+	flex-direction: column;
+	background-color: white;
+	border-radius: 5px;
+	width: 420px;
+	max-height: 95%;
+	overflow-y: auto;
+	margin: 0;
+    vertical-align: middle;
+    overflow: hidden;
+    text-align: left;
+    padding: 48px 60px 48px 60px;
+    background: #fff;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-rendering: auto;
+	height: 601px;
+}
+
+.saveHeader {
+	width: 420px;
+	height: 81px;
+	margin-bottom: 30px;
+}
+
+.saveHeaderTitle {
+	width: 420px;
+	height: 28px;
+	margin-top: 0;
+	margin-bottom: 6px;
+	font-size: 22px;
+	font-weight: 700;
+	line-height: 29.28px;
+	user-select: text;
+	text-align: center;
+	color: rgb(211, 35, 35);
+}
+
+.saveHeaderSub {
+	width: 420px;
+	height: 17px;
+	margin-bottom: 12px;
+	margin-top: 0px;
+	color: rgb(51, 51, 51);
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 17.99px;
+	text-align: center;
+}
+
+.saveSignUp {
+	width: 420px;
+	height: 161px;
+	display: flex;
+	align-items: center !important;
+	flex-direction: column;
+	margin-bottom: 24px;
+}
+
+.saveHeaderSS {
+	min-width: 420px;
+	min-height: 18px;
+	margin-bottom: 12px;
+	margin-top: 0px;
+	color: rgb(51, 51, 51);
+	font-size: 12px;
+	font-weight: 400;
+	text-align: center;
+}
+
+.signFb {
+	display: flex;
+	color: rgb(255, 255, 255);
+	width: 396px;
+	min-height: 36px;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px 0px;
+	border-radius: 3px;
+	background-color: rgb(59, 89, 152);
+	border: 1px solid rgb(38, 57, 97);
+	padding: 6px 5px 4px 5px;
+	cursor: pointer;
+	font-size: 14px;
+	text-align: center;
+	vertical-align: middle;
+	align-items: center !important;
+}
+
+.signFbInner {
+	width: 384px;
+	height: 24px;
+	font-size: 14px;
+	font-weight: 700;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.signFbtext {
+	text-align: center;
+	vertical-align: center;
+	margin-left: 3px;
+	margin-top: 4px;
+}
+
+.signGl {
+	color: grey;
+	width: 396px;
+	min-height: 36px;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px 0px;
+	border-radius: 3px;
+	border: 1px solid rgb(38, 57, 97);
+	padding: 6px 5px 4px 5px;
+	cursor: pointer;
+	font-size: 14px;
+	text-align: center;
+	vertical-align: middle;
+	align-items: center !important;
+	margin-top: 10px;
+	margin-bottom: 12px;
+}
+
+.signGlInner {
+	width: 384px;
+	height: 29px;
+	font-size: 14px;
+	font-weight: 700;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.signGltext {
+	text-align: center;
+	vertical-align: center;
+	margin-left: 7px;
+	margin-top: 6px;
+}
+
+.signMessage {
+	text-align: center;
+	margin: 0;
+	margin-bottom: 12px;
+	width: 396px;
+	height: 18px;
+	font-size: 12px;
+	font-weight: 400;
+	
+}
+
+.or {
+	border: 0px solid black;
+	border-bottom: 1px solid rgba(0, 0, 0, 0);
+	border-top: 1px solid rgb(204, 204, 204);
+	margin-top: 24px;
+	margin-bottom: 24px;
+	font-size: 14px;
+	width: 420px;
+	height: 16px;
+	color: rgb(51, 51, 51);
+	padding: 0;
+	display: block;
+	overflow: visible;
+}
+
+.or > legend {
+	font-size: 1em;
+    padding: 0 15px !important;
+    margin: 0 auto;
+	color: #666;
+	display: block;
+	width: 21px;
+	height: 17px;
+}
+
+.signUp {
+	width: 420px;
+	height: 278px;
+	display: block;
+	position: relative;
+}
+
+.personInfo {
+	width: 420px;
+	height: 108px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.personName {
+	display: flex;
+	width: 402px;
+	height: 42px;
+	margin: -3px;
+	padding: 0;
+}
+
+.namee {
+	max-width: 195px !important;
+	height: 39px;
+	padding: 0 3px 0 3px;
+	margin-top: 3px;
+}
+
+.nameInput {
+	width: 175px;
+	height: 18px;
+	padding: 5px 9px 5px 9px;
+	border: 1px solid rgb(153, 153, 153);
+	border-radius: 3px;
+	font-size: 14px;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+}
+
+ul {
+	list-style: none;
+}
+
+.personEPCont {
+	width: 396px;
+	height: 69px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.personEmail {
+	min-width: 376px;
+	height: 18px;
+	padding: 5px 9px;
+	border: 1px solid rgb(153, 153, 153);
+	border-radius: 3px;
+	margin-bottom: 9px;
+}
+
+.personPW {
+	min-width: 376px;
+	height: 18px;
+	padding: 5px 9px;
+	border: 1px solid rgb(153, 153, 153);
+	border-radius: 3px;
+	margin-bottom: 18px;
+}
+
+.morePersonInfo {
+	width: 420px;
+	height: 98px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.personZip {
+	width: 376px;
+	height: 18px;
+	padding: 5px 9px;
+	border: 1px solid rgb(153, 153, 153);
+	border-radius: 3px;
+	margin-bottom: 9px;
+}
+
+.personOption {
+	width: 396px;
+	height: 59px;
+	
+}
+
+.moreLabel {
+	width: 56.9px;
+	height: 17px;
+	margin-bottom: 6px;
+	display: inline-block;
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.moreSpan {
+	color: rgb(153, 153, 153);
+	display: inline;
+	font-size: 12px;
+	font-weight: 400;
+	margin-left: 2px;
+}
+
+.moreField {
+	display: flex;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	flex-direction: row;
+	justify-content: center;
+	margin-bottom: 6px;
+	width: 396px;
+	height: 32px;
+	justify-content: space-between;
+}
+
+.signBtnCont {
+	display: flex;
+	min-height: 48px;
+	justify-content: center
+}
+
+.signUpBtn {
+	display: flex;
+	min-width: 396px;
+	min-height: 21px;
+	padding: 12px 18px 13px 18px;
+	border: 1px solid rgb(141, 0, 5);
+	background-color: rgba(0, 0, 0, 0);
+	background-image: linear-gradient(rgb(217, 0, 7), rgb(201, 20, 0));
+	background-position-x: 0%;
+	background-position-y: 0%;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px 0px;
+	border-radius: 3px;
+	color: rgb(255, 255, 255);
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 21px;
+	vertical-align: middle;
+	justify-content: space-between;
+	margin-top: 4px;
+}
+
+select {
+	width: 127.89px;
+	height: 30px;
+	font-size: 14px;
+	padding: 5px 9px;
+	border-radius: 3px;
+	-webkit-appearance: menulist-button;
+	align-items: center;
+    white-space: pre;
+	-webkit-rtl-ordering: logical;
+	-webkit-writing-mode: horizontal-tb !important;
+	border: 1px solid rgb(153, 153, 153);
+	background-color: rgb(255, 255, 255);
+	background-attachment: 	scroll;
+	color: rgb(153, 153, 153);
+}
+
+.smallCont {
+	width: 396px;
+	height: 18px;
+	margin-top: 12px;
+	text-align: right;
+	
+}
+
+small {
+	color: rgb(153, 153, 153);
+	font-size: 12px;
+}
+
+/* share modal */
+
+.shareCont {
+	max-width: 491px;
+	position: relative;
+	display: inline-block;
 	z-index: 1;
 	position: relative;
-    overflow: hidden;
-    background: white;
-    border-radius: 5px;
-    border: 1px solid #999;
-    padding: 12px;
-    max-height: 700px;
+	width: 95%;
+	max-height: 95%;
+	height: 635px;
+	overflow: hidden;
     overflow-y: auto;
-    box-shadow: 0 6px 36px rgba(0,0,0,0.15);
+	vertical-align: middle;
+	user-select: text;
+	box-sizing: border-box;
+	margin: 0;
+    padding: 0;
+	border: 0;
+	align-self: center;
+	background: white;
+	border-radius: 5px;
+	border: 1px solid #999;
+	padding: 12px;
+	box-shadow: 0 6px 36px rgba(0,0,0,0.15);
+}
+
+.shareHeader {
+	display: block;
+	border-bottom: 1px solid rgb(204, 204, 204);
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	height: 32px;
+	width: 399px;
+	line-height: 18px;
+	padding: 12px 54px 12px 12px;
+	text-align: left;
+	user-select: text;
+	vertical-align: baseline;
+}
+
+.shareHeader > h2 {
+	margin:0;
+	padding: 0;
+	border:0;
+	width: 399px;
+	height: 26px;
+	color: rgb(211, 35, 35);
+	font-size: 21px;
+	font-weight: 700;
+	margin-bottom: 6px;
+}
+
+.shareBody {
+	width: 441px;
+	height: 474px;
+	padding: 18px 12px;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.shareMedia {
+	width: 441px;
+	height: 42px;
+	margin-bottom: 12px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.shareFb {
+	display: flex;
+	color: rgb(255, 255, 255);
+	width: 208.5px;
+	height: 34px;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px 0px;
+	border-radius: 3px;
+	background-color: rgb(59, 89, 152);
+	border: 1px solid rgb(38, 57, 97);
+	padding: 6px 5px 4px 5px;
+	cursor: pointer;
+	font-size: 14px;
+	text-align: center;
+	vertical-align: middle;
+	align-items: center !important;
+	margin: 3px 0;
+	padding: 0 3px;
+	text-align: center;
+	justify-content: center
+}
+
+.shareFbtext {
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	font-size: 14px;
+	font-weight: 700;
+	height: 24px;
+	justify-content: center;
+	text-align: center;
+	vertical-align: baseline;
+	margin-top: 10px;
+	margin-left: 5px;
+}
+
+.shareTw {
+	display: flex;
+	color: rgb(255, 255, 255);
+	width: 208.5px;
+	height: 34px;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px 0px;
+	border-radius: 3px;
+	background-color: rgb(80, 171, 241);
+	border: 1px solid rgb(18, 136, 226);
+	padding: 6px 5px 4px 5px;
+	cursor: pointer;
+	font-size: 14px;
+	text-align: center;
+	vertical-align: middle;
+	align-items: center !important;
+	margin: 3px 0;
+	padding: 0 3px;
+	text-align: center;
+	justify-content: center;
+}
+
+.shareTwtext {
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	display: flex;
+	flex-direction: row;
+	font-size: 14px;
+	font-weight: 700;
+	height: 24px;
+	justify-content: center;
+	text-align: center;
+	vertical-align: baseline;
+	margin-top: 10px;
+	margin-left: 5px;
+}
+
+.link {
+	display:block;
+	width: 421px !important;
+	height: 22px !important;
+	padding: 5px 9px;
+	border: 1px solid rgb(153, 153, 153);
+	color: rgb(51, 51, 51);
+	font-size: 14px;
+	font-weight: 700px;
+	border-radius: 3px;
+	margin-bottom: 18px;
+}
+
+.shareOr {
+	border: 0px solid black;
+	border-bottom: 1px solid rgba(0, 0, 0, 0);
+	border-top: 1px solid rgb(204, 204, 204);
+	margin-bottom: 24px;
+	font-size: 14px;
+	width: 441px;
+	height: 16px;
+	color: rgb(51, 51, 51);
+	padding: 0;
+	display: block;
+	overflow: visible;
+	justify-content: center;
+}
+
+.shareOr > legend {
+	font-size: 1em;
+    padding: 0 15px !important;
+    margin: 0 auto;
+	color: #666;
+	display: block;
+	width: 21px;
+	height: 17px;
+	font-weight: 700;
+}
+
+.shareForm {
+	width: 441px;
+	height: 317px;
+}
+
+.shareAD {
+	width: 441px;
+	height: 73px;
+}
+
+.shareForm > label {
+	width: 110px;
+	height: 18px;
+	font-size: 14px;
+	font-weight: 700;
+	vertical-align: baseline;
+}
+
+.shareForm > input {
+	width: 421px;
+	height: 18px;
+	padding: 5px 9px;
+	border: 1px solid rgb(153, 153, 153);
+	color: rgb(51, 51, 51);
+	border-radius: 3px;
+	margin-top: 6px;
+	margin-bottom: 18px;
+}
+
+.shareAD > label {
+	width: 110px;
+	height: 18px;
+	font-size: 14px;
+	font-weight: 700;
+	vertical-align: baseline;
+}
+
+.shareAD > input {
+	width: 421px;
+	height: 18px;
+	padding: 5px 9px;
+	border: 1px solid rgb(153, 153, 153);
+	color: rgb(51, 51, 51);
+	border-radius: 3px;
+	margin-top: 6px;
+	margin-bottom: 18px;
+}
+
+.shareSpan {
+	font-size: 12px;
+	color: rgb(153, 153, 153);
+	font-weight: 400;
+}
+
+.shareTA {
+	width: 421px;
+	height: 66px;
+	padding: 5px 9px;
+	border: 1px solid rgb(153, 153, 153);
+	margin-bottom: 18px;
+	border-radius: 3px;
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.shareFooter {
+	width: 441px;
+	height: 30px;
+	display: flex;
+	justify-content: flex-start;
+	padding: 0 0 0 12px;
+}
+
+.shareFooter > button {
+	width: 51.36px !important;
+	height: 30px;
+	padding: 5px 8px;
+	border: 1px solid rgb(141, 0, 5) !important;
+	background-image: linear-gradient(rgb(217, 0, 7), rgb(201, 20, 0));
+	vertical-align: middle;
+	text-align: center;
+	font-size: 12px;
+	font-weight: 700;
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px 0px;
+}
+
+/* edit modals */
+
+.editCont {
+	max-width: 491px;
+	position: relative;
+	display: inline-block;
+	z-index: 1;
+	position: relative;
+	width: 408px;
+	height: 298px;
+	overflow: hidden;
+    overflow-y: auto;
+	vertical-align: middle;
+	user-select: text;
+	box-sizing: border-box;
+	margin: 0;
+    padding: 0;
+	border: 0;
+	align-self: center;
+	background: white;
+	border-radius: 5px;
+	border: 1px solid #999;
+	padding: 12px;
+	box-shadow: 0 6px 36px rgba(0,0,0,0.15);
+}
+
+.editHeader {
+	display: block;
+	border-bottom: 1px solid rgb(204, 204, 204);
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	height: 32px;
+	width: 399px;
+	line-height: 18px;
+	padding: 12px 54px 12px 12px;
+	text-align: left;
+	user-select: text;
+	vertical-align: baseline;
+}
+
+.editHeader > h2 {
+	margin:0;
+	padding: 0;
+	border:0;
+	width: 399px;
+	height: 26px;
+	color: rgb(211, 35, 35);
+	font-size: 21px;
+	font-weight: 700;
+	margin-bottom: 6px;
 }

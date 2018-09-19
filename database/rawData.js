@@ -244,7 +244,7 @@ restaurantName.forEach((res) => {
     data.categories.push(cate);
   }
   //dollars
-  data.dollars = Math.floor(Math.random() * Math.floor(3))+1;
+  data.dollars = Math.floor(Math.random() * Math.floor(3)) + 1;
   //address
   data.address = faker.address.streetAddress();
   data.city = faker.address.city();

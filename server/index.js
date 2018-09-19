@@ -1,13 +1,16 @@
 const _ = require('underscore');
 const express = require('express');
+var cors = require('cors');
 let app = express();
 const bodyParser = require('body-parser');
 let getRestaurantsById = require('../database/index.js').getRestaurantsById;
 let getRestaurantsByName = require('../database/index.js').getRestaurantsByName;
+app.use(cors());
 app.use(express.static('./client/dist'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/:id', express.static('./client/dist'));
+
 
 app.get('/:id/res', function (req, res) {
   let resIdOrName = req.param('id');

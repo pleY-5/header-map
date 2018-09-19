@@ -141,8 +141,9 @@ export default class Header extends React.Component {
         </div>
         <Buttons />
       </div>
-      <div id="photo-wheel" className={styles.subHeader}>
+      <div className={styles.subHeader}>
         <Map address={this.state.address} city={this.state.city} state={this.state.state} postalCode={this.state.postalCode} latitude={this.state.latitude} longitude={this.state.longitude} tel={this.state.tel} url={this.state.url} />
+        <div id="photo-wheel"></div>
       </div>
     </div>);
   }

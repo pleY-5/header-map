@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from '../dist/main.css';
-// import styles from 'https://s3-us-west-1.amazonaws.com/yelp-reactor-header/main.css';1
+// import styles from '../dist/main.css';
+import styles from 'https://s3-us-west-1.amazonaws.com/yelp-reactor-header/main.css';
 
 export default class Ratings extends React.Component {
   constructor(props) {
@@ -37,7 +37,6 @@ export default class Ratings extends React.Component {
               </div>
               <h3>Overall Rating</h3>
               <div>Yelping Since {this.props.yelpingSince} with {this.props.ratings.amount} reviews</div>
-              <table className={styles.rateTable}></table>
               <p>We calculate the overall star rating with randomly stored data!</p>
               <p>Learn More.</p>
             </div>

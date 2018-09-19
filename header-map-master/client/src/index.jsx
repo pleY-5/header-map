@@ -1,8 +1,8 @@
 import React from 'react';
 import $ from 'jquery';
 import _ from 'underscore';
-import styles from '../dist/main.css';
-// import styles from 'https://s3-us-west-1.amazonaws.com/yelp-reactor-header/main.css';
+// import styles from '../dist/main.css';
+import styles from 'https://s3-us-west-1.amazonaws.com/yelp-reactor-header/main.css';
 import Map from './map.jsx';
 import Cate from './cate.jsx';
 import RatingsCont from './ratingsCont.jsx';

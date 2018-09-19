@@ -1,6 +1,6 @@
 import React from 'react';
-import styles from '../dist/main.css';
-// import styles from 'https://s3-us-west-1.amazonaws.com/yelp-reactor-header/main.css';
+// import styles from '../dist/main.css';
+import styles from 'https://s3-us-west-1.amazonaws.com/yelp-reactor-header/main.css';
 import _ from 'underscore';
 
 export default class EditCate extends React.Component {

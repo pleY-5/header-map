@@ -204,8 +204,6 @@ let getRandomRatings = (rate) => {
   return output;
 }
 
-let increment = 1;
-
 restaurantName.forEach((res) => {
   let data = {};
   data.name = res;
@@ -257,9 +255,7 @@ restaurantName.forEach((res) => {
   data.url = faker.internet.domainName();
   data.claimed = !!Math.floor(Math.random() * Math.floor(2));
   data.yelpingSince = faker.date.between('2005-01-01', '2017-01-01');
-  data.id = increment;
-  increment++;
-  data.lName = res.toLowerCase();
+
   restaurants.push(data);
 });
 
@@ -279,8 +275,6 @@ let restaurantsData = restaurants;
 mongoose.connect('mongodb://127.0.0.1:27017/yelpReactor', {useNewUrlParser: true });
 
 let restaurantSchema = mongoose.Schema({
-  id: Number,
-  lName: String,
   name: String,
   ratings: {
     yearly: {
@@ -314,11 +308,6 @@ let restaurantSchema = mongoose.Schema({
 
 let Restaurants = mongoose.model('Restaurants', restaurantSchema);
 
-let removeCollection = () => {
-  Restaurants.remove({});
-};
-
-removeCollection();
 //Saving data to mongodb
 restaurantsData.forEach((restaurant) => {
   let res = new Restaurants(restaurant);

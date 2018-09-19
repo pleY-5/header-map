@@ -1549,7 +1549,8 @@ small {
 .subHeader {
 	width: 960px;
 	height: 336px;
-	display : table;
+	display : flex;
+	flex-direction: row;
 }
 
 /* map modal */

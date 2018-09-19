@@ -4,6 +4,6 @@ import Header from './index.jsx';
 
 ReactDOM.render(
   <Header />,
-  document.getElementById('app')
+  document.getElementById('header-map')
 );
   

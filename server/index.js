@@ -5,14 +5,17 @@ let app = express();
 const bodyParser = require('body-parser');
 let getRestaurantsById = require('../database/index.js').getRestaurantsById;
 let getRestaurantsByName = require('../database/index.js').getRestaurantsByName;
-app.use(cors());
-app.use(express.static('./client/dist'));
+
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/:id', express.static('./client/dist'));
 
+var corsOptions = {
+  origin: 'http://localhost:1335',
+  optionsSuccessStatus: 200
+}
 
-app.get('/:id/res', function (req, res) {
+app.get('/:id/res', cors(corsOptions), function (req, res) {
   let resIdOrName = req.param('id');
   if (isNaN(parseInt(resIdOrName))) {
     getRestaurantsByName(resIdOrName, (err, data) => {

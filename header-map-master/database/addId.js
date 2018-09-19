@@ -42,12 +42,10 @@ let Restaurants = mongoose.model('Restaurants', restaurantSchema);
 
 
 const addEventTsField = () => {
-  let increment = 1;
   Restaurants.find( (err, d) => {
     d.forEach(function(doc) {
       var lName = (doc.name).toLowerCase();
-      Restaurants.update({_id: doc._id}, { $set: {lName: lName, id: increment}}, ()=> { Restaurants.find((err, d)=> { console.log(d); }); });
-      increment++;
+      Restaurants.update({_id: doc._id}, { $set: {lName: lName}}, ()=> { Restaurants.find((err, d)=> { console.log(d); }); });
     });
   });
 }

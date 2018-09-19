@@ -40,16 +40,27 @@ let restaurantSchema = mongoose.Schema({
 
 let Restaurants = mongoose.model('Restaurants', restaurantSchema);
 
-
-const addEventTsField = () => {
-  let increment = 1;
-  Restaurants.find( (err, d) => {
-    d.forEach(function(doc) {
-      var lName = (doc.name).toLowerCase();
-      Restaurants.update({_id: doc._id}, { $set: {lName: lName, id: increment}}, ()=> { Restaurants.find((err, d)=> { console.log(d); }); });
-      increment++;
-    });
+//Finding all data
+let getRestaurantsById = (resId, callback) => {
+  let Id = parseInt(resId);
+  Restaurants.find({id: Id}, (err, d)=>{
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, d);
+    }
   });
-}
+};
 
-addEventTsField();
+let getRestaurantsByName = (resName, callback) => {
+  Restaurants.find({lName: resName}, (err, d)=>{
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, d);
+    }
+  });
+};
+
+exports.getRestaurantsByName = getRestaurantsByName;
+exports.getRestaurantsById = getRestaurantsById;

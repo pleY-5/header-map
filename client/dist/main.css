@@ -642,12 +642,28 @@
     white-space: nowrap;
 }
 
-button {
-	background-color: white;
+.signFb {
+	color: white !important;
 	display: flex;
 	background-size: cover;
 	border: 1px solid #ccc!important;
 	border-radius: 3px;
+}
+
+.signGl {
+	background-color: white !important;
+	display: flex;
+	background-size: cover !important;
+	border: 1px solid #ccc!important;
+	border-radius: 3px;
+}
+
+.cateFooterBtn {
+	color: white !important;
+	display: flex;
+	background-size: cover;
+	border: 1px solid #ccc!important;
+	border-radius: 3px !important;
 }
 
 .stars {
@@ -832,6 +848,7 @@ button {
 }
 
 .signFbtext {
+	color: white;
 	text-align: center;
 	vertical-align: center;
 	margin-left: 3px;
@@ -840,6 +857,7 @@ button {
 
 .signGl {
 	color: grey;
+	background-color: white;
 	width: 396px;
 	min-height: 36px;
 	box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px 0px;
@@ -950,10 +968,6 @@ button {
 	list-style-type: none;
 }
 
-ul {
-	list-style: none;
-}
-
 .personEPCont {
 	width: 396px;
 	height: 69px;
@@ -1062,7 +1076,7 @@ ul {
 	justify-content: center;
 }
 
-select {
+.select {
 	width: 127.89px;
 	height: 30px;
 	font-size: 14px;

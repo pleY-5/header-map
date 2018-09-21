@@ -67,7 +67,7 @@ export default class Header extends React.Component {
   getData() {
     var id = window.location.pathname;
     id = id.substring(1, id.length - 1).toLowerCase();
-    $.get(`http://localhost:7763/${id}/res`, id, (response)=> {
+    $.get(`/api/header/${id}/res`, id, (response)=> {
       console.log(`get request success to "/res" with restaurant name: ${id} data: `, response);
       this.setState({
         name: response.name,

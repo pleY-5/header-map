@@ -305,38 +305,38 @@ export default class Ratings extends React.Component {
               <p className={styles.yelpingSince}>Yelping Since {this.props.yelpingSince.substring(11, 15)} with {this.props.ratings.amount} reviews</p>
               <div className={styles.rateStarTable}>
                 <div className={styles.rows}>
-                  <div className={styles.rowStar}></div>
+                  <div className={styles.rowStar5}>5 Star</div>
                   <div className={styles.innerStar}>
-                    <div className={styles.bar}></div>
-                    <div>{this.props.ratings.stars['5']}</div>
+                    <div className={styles.bar5} style={{width: `${20 + (this.props.ratings.stars['5'] / this.props.ratings.amount) * 100}%`}}></div>
+                    <div className={styles.ratetext}>{this.props.ratings.stars['5']}</div>
                   </div>
                 </div>
                 <div className={styles.rows}>
-                  <div className={styles.rowStar}></div>
+                  <div className={styles.rowStar4}>4 Star</div>
                   <div className={styles.innerStar}>
-                    <div className={styles.bar}></div>
-                    <div>{this.props.ratings.stars['4']}</div>
+                    <div className={styles.bar4} style={{width: `${20 + (this.props.ratings.stars['4'] / this.props.ratings.amount) * 100}%`}}></div>
+                    <div className={styles.ratetext}>{this.props.ratings.stars['4']}</div>
                   </div>
                 </div>
                 <div className={styles.rows}>
-                  <div className={styles.rowStar}></div>
+                  <div className={styles.rowStar3}>3 Star</div>
                   <div className={styles.innerStar}>
-                    <div className={styles.bar}></div>
-                    <div>{this.props.ratings.stars['3']}</div>
+                    <div className={styles.bar3} style={{width: `${20 + (this.props.ratings.stars['3'] / this.props.ratings.amount) * 100}%`}}></div>
+                    <div className={styles.ratetext}>{this.props.ratings.stars['3']}</div>
                   </div>
                 </div>
                 <div className={styles.rows}>
-                  <div className={styles.rowStar}></div>
+                  <div className={styles.rowStar2}>2 Star</div>
                   <div className={styles.innerStar}>
-                    <div className={styles.bar}></div>
-                    <div>{this.props.ratings.stars['2']}</div>
+                    <div className={styles.bar2} style={{width: `${20 + (this.props.ratings.stars['2'] / this.props.ratings.amount) * 100}%`}}></div>
+                    <div className={styles.ratetext}>{this.props.ratings.stars['2']}</div>
                   </div>
                 </div>
                 <div className={styles.rows}>
-                  <div className={styles.rowStar}></div>
+                  <div className={styles.rowStar1}>1 Star</div>
                   <div className={styles.innerStar}>
-                    <div className={styles.bar}></div>
-                    <div>{this.props.ratings.stars['1']}</div>
+                    <div className={styles.bar1} style={{width: `${20 + (this.props.ratings.stars['1'] / this.props.ratings.amount) * 100}%`}}></div>
+                    <div className={styles.ratetext}>{this.props.ratings.stars['1']}</div>
                   </div>
                 </div>
               </div>

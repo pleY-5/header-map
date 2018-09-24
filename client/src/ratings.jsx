@@ -15,7 +15,8 @@ export default class Ratings extends React.Component {
       py3: false,
       yr18: true,
       yr17: false,
-      yr16: false
+      yr16: false,
+      rendered: false
     };
     this.yr1 = this.yr1.bind(this);
     this.yr2 = this.yr2.bind(this);
@@ -24,10 +25,14 @@ export default class Ratings extends React.Component {
     this.draw1 = this.draw1.bind(this);
     this.draw2 = this.draw2.bind(this);
     this.draw3 = this.draw3.bind(this);
+    this.show = this.show.bind(this);
+    this.hide = this.hide.bind(this);
   }
 
   componentDidMount() {
     this.draw1();
+    this.draw2();
+    this.draw3();
   }
   
   yr1() {
@@ -42,7 +47,6 @@ export default class Ratings extends React.Component {
       yr17: false,
       yr16: false
     }, () => {
-      this.draw1();
       this.setState({
         y1: true,
         y2: false,
@@ -63,7 +67,6 @@ export default class Ratings extends React.Component {
       yr17: true,
       yr16: false
     }, () => {
-      this.draw2();
       this.setState({
         y1: false,
         y2: true,
@@ -84,7 +87,6 @@ export default class Ratings extends React.Component {
       yr17: false,
       yr16: true
     }, () => {
-      this.draw3();
       this.setState({
         y1: false,
         y2: false,
@@ -105,10 +107,9 @@ export default class Ratings extends React.Component {
   }
 
   draw1() {
-    var canvas = document.getElementById('canvas');
+    var canvas = document.getElementById('canvas1');
     if (canvas.getContext) {
       var ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = 'rgb(252, 214, 211';
       ctx.beginPath();
       let r2018 = this.props.ratings.yearly['2018'];
@@ -136,13 +137,15 @@ export default class Ratings extends React.Component {
       ctx.lineTo(19 + (41 * 0), 172);
       ctx.fill();
     }
+    this.setState({
+      rendered: true
+    });
   }
 
   draw2() {
-    var canvas = document.getElementById('canvas');
+    var canvas = document.getElementById('canvas2');
     if (canvas.getContext) {
       var ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = 'rgb(252, 214, 211';
       ctx.beginPath();
       let r2018 = this.props.ratings.yearly['2017'];
@@ -173,10 +176,9 @@ export default class Ratings extends React.Component {
   }
 
   draw3() {
-    var canvas = document.getElementById('canvas');
+    var canvas = document.getElementById('canvas3');
     if (canvas.getContext) {
       var ctx = canvas.getContext('2d');
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = 'rgb(252, 214, 211';
       ctx.beginPath();
       let r2018 = this.props.ratings.yearly['2016'];
@@ -204,6 +206,16 @@ export default class Ratings extends React.Component {
       ctx.lineTo(19 + (41 * 0), 172);
       ctx.fill();
     }
+  }
+
+  show(canvasId) {
+    var canvas = document.getElementById(canvasId);
+    canvas.style.display = 'inline';
+  }
+
+  hide(canvasId) {
+    var canvas = document.getElementById(canvasId);
+    canvas.style.display = 'none';
   }
 
   render() {
@@ -265,12 +277,17 @@ export default class Ratings extends React.Component {
                     <div className={styles.yContent} style={{top: '44px' }}>4</div>
                     <div className={styles.yContent} style={{top: '12px' }}>5</div>
                   </div>
-                  { this.state.yr18 ?
-                    <canvas id="canvas" width="490px" height="195px"></canvas> : 
-                    this.state.yr17 ?
-                      <canvas id="canvas" width="490px" height="195px"></canvas> :
-                      this.state.yr16 ?
-                        <canvas id="canvas" width="490px" height="195px"></canvas> : null
+                  <canvas id="canvas1" width="490px" height="195px"></canvas>
+                  <canvas id="canvas2" width="490px" height="195px"></canvas>
+                  <canvas id="canvas3" width="490px" height="195px"></canvas>
+                  { this.state.yr18 && this.state.rendered ?
+                    this.show('canvas1') : this.state.rendered ? this.hide('canvas1') : null
+                  }
+                  { this.state.yr17 && this.state.rendered ?
+                    this.show('canvas2') : this.state.rendered ? this.hide('canvas2') : null
+                  }
+                  { this.state.yr16 && this.state.rendered ?
+                    this.show('canvas3') : this.state.rendered ? this.hide('canvas3') : null
                   }
                   { this.state.yr18 ? 
                     <div className={styles.graph}>

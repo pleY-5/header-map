@@ -28,6 +28,21 @@ app.get('/:id/res', cors(corsOptions), function (req, res) {
   }
 });
 
+
+app.get('/api/header/:id/res', cors(corsOptions), function (req, res) {
+  let resIdOrName = req.param('id');
+  if (isNaN(parseInt(resIdOrName))) {
+    getRestaurantsByName(resIdOrName, (err, data) => {
+      res.send(JSON.stringify(data[0]));
+    });
+  } else {
+    getRestaurantsById(resIdOrName, (err, data)=>{
+      res.send(JSON.stringify(data[0]));
+    });
+  }
+});
+
+
 let port = 7763;
 
 app.listen(port, function() {

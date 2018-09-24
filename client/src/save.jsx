@@ -62,7 +62,7 @@ export default class Save extends React.Component {
                 <fieldset className={styles.moreField}>
                   <ul className={styles.moreField}>
                     <li>
-                      <select>
+                      <select className={styles.select}>
                         <option value>Month</option>
                         <option value="1">Jan</option>
                         <option value="2">Feb</option>
@@ -79,7 +79,7 @@ export default class Save extends React.Component {
                       </select>
                     </li>
                     <li>
-                      <select>
+                      <select className={styles.select}>
                         <option value>Day</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -115,7 +115,7 @@ export default class Save extends React.Component {
                       </select>
                     </li>
                     <li>
-                      <select>
+                      <select className={styles.select}>
                         <option value>Year</option>
                         <option value="2018">2018</option>
                         <option value="2017">2017</option>

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 let Promise = require('bluebird');
 mongoose.Promise = Promise;
 
-mongoose.connect('mongodb://127.0.0.1:27017/yelpReactor', {useNewUrlParser: true });
+mongoose.connect('mongodb://127.0.0.1:27017/yelpReactor');
 
 let restaurantSchema = mongoose.Schema({
   id: Number,

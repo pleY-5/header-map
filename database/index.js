@@ -38,12 +38,13 @@ let restaurantSchema = mongoose.Schema({
   yelpingSince: String
 });
 
-let Restaurants = mongoose.model('Restaurants', restaurantSchema);
+const Restaurants = mongoose.model('Restaurants', restaurantSchema);
 
-//Finding all data
-let getRestaurantsById = (resId, callback) => {
-  let Id = parseInt(resId);
-  Restaurants.find({id: Id}, (err, d)=>{
+// Finding all data
+
+const getRestaurantsById = (resId, callback) => {
+  const Id = parseInt(resId);
+  Restaurants.find({ id: Id }, (err, d) => {
     if (err) {
       callback(err, null);
     } else {
@@ -52,8 +53,8 @@ let getRestaurantsById = (resId, callback) => {
   });
 };
 
-let getRestaurantsByName = (resName, callback) => {
-  Restaurants.find({lName: resName}, (err, d)=>{
+const getRestaurantsByName = (resName, callback) => {
+  Restaurants.find({ lName: resName }, (err, d) => {
     if (err) {
       callback(err, null);
     } else {
@@ -62,5 +63,30 @@ let getRestaurantsByName = (resName, callback) => {
   });
 };
 
-exports.getRestaurantsByName = getRestaurantsByName;
-exports.getRestaurantsById = getRestaurantsById;
+const delRestaurantsById = (resId, callback) => {
+  const Id = parseInt(resId);
+  Restaurants.find({id: Id}, (err, d) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, d);
+    }
+  });
+};
+
+const delRestaurantsByName = (resName, callback) => {
+  Restaurants.find({ lName: resName }, (err, d) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, d);
+    }
+  });
+};
+
+module.exports = {
+  getRestaurantsByName,
+  getRestaurantsById,
+  delRestaurantsById,
+  delRestaurantsByName,
+};

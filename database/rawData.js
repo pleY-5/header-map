@@ -309,7 +309,7 @@ let restaurantSchema = mongoose.Schema({
   tel: String,
   url: String,
   claimed: Boolean,
-  yelpingSince: String
+  yelpingSince: String,
 });
 
 let Restaurants = mongoose.model('Restaurants', restaurantSchema);

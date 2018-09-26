@@ -31,23 +31,13 @@ app.get('/:id/res', cors(corsOptions), function (req, res) {
 });
 
 const { getRestaurantsByName, getRestaurantsById } = models;
+const { delRestaurantsByName, delRestaurantsById } = models;
+const { postRestaurantsByName, postRestaurantsById } = models;
+const { putRestaurantsByName, putRestaurantsById } = models;
 
-app.get('/api/header/:id/res', cors(corsOptions), function (req, res) {
-  let resIdOrName = req.param('id');
-  if (isNaN(parseInt(resIdOrName))) {
-    getRestaurantsByName(resIdOrName, (err, data) => {
-      res.send(JSON.stringify(data[0]));
-    });
-  } else {
-    getRestaurantsById(resIdOrName, (err, data)=>{
-      res.send(JSON.stringify(data[0]));
-    });
-  }
-});
-
-app.post('/api/header/:id/res', (req, res) => {
+app.get('/api/header/:id/res', cors(corsOptions), (req, res) => {
   const resIdOrName = req.param('id');
-  if (isNaN(parseInt(resIdOrName))) {
+  if (Number.isNaN(parseInt(resIdOrName, 10))) {
     getRestaurantsByName(resIdOrName, (err, data) => {
       res.send(JSON.stringify(data[0]));
     });
@@ -58,9 +48,48 @@ app.post('/api/header/:id/res', (req, res) => {
   }
 });
 
+app.delete('/api/header/:id/res', (req, res) => {
+  const resIdOrName = req.param('id');
+  if (Number.isNaN(parseInt(resIdOrName, 10))) {
+    delRestaurantsByName(resIdOrName, (err, data) => {
+      res.send(JSON.stringify(data[0]));
+    });
+  } else {
+    delRestaurantsById(resIdOrName, (err, data) => {
+      res.send(JSON.stringify(data[0]));
+    });
+  }
+});
 
-let port = 7763;
+app.post('/api/header/:id/res', (req, res) => {
+  const resIdOrName = req.param('id');
+  if (Number.isNaN(parseInt(resIdOrName, 10))) {
+    postRestaurantsByName(resIdOrName, (err, data) => {
+      res.send(JSON.stringify(data[0]));
+    });
+  } else {
+    postRestaurantsById(resIdOrName, (err, data) => {
+      res.send(JSON.stringify(data[0]));
+    });
+  }
+});
 
-app.listen(port, function() {
+app.put('/api/header/:id/res', (req, res) => {
+  const resIdOrName = req.param('id');
+  if (Number.isNaN(parseInt(resIdOrName, 10))) {
+    putRestaurantsByName(resIdOrName, (err, data) => {
+      res.send(JSON.stringify(data[0]));
+    });
+  } else {
+    putRestaurantsById(resIdOrName, (err, data) => {
+      res.send(JSON.stringify(data[0]));
+    });
+  }
+});
+
+
+const port = 7763;
+
+app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });

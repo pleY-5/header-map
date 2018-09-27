@@ -1,28 +1,29 @@
 const mongoose = require('mongoose');
-let Promise = require('bluebird');
+const Promise = require('bluebird');
+
 mongoose.Promise = Promise;
 
 mongoose.connect('mongodb://127.0.0.1:27017/yelpReactor', {useNewUrlParser: true });
 
-let restaurantSchema = mongoose.Schema({
+const restaurantSchema = mongoose.Schema({
   id: Number,
   lName: String,
   name: String,
   ratings: {
     yearly: {
-      '2016': Array,
-      '2017': Array,
-      '2018': Array
-    }, 
-    current: Number, 
+      2016: Array,
+      2017: Array,
+      2018: Array,
+    },
+    current: Number,
     stars: {
       1: Number,
       2: Number,
       3: Number,
       4: Number,
-      5: Number
+      5: Number,
     },
-    amount: Number
+    amount: Number,
   },
   categories: Array,
   dollars: Number,
@@ -35,7 +36,7 @@ let restaurantSchema = mongoose.Schema({
   tel: String,
   url: String,
   claimed: Boolean,
-  yelpingSince: String
+  yelpingSince: String,
 });
 
 const Restaurants = mongoose.model('Restaurants', restaurantSchema);
@@ -43,8 +44,8 @@ const Restaurants = mongoose.model('Restaurants', restaurantSchema);
 // Finding all data
 
 const getRestaurantsById = (resId, callback) => {
-  const Id = parseInt(resId);
-  Restaurants.find({ id: Id }, (err, d) => {
+  const id = parseInt(resId, 10);
+  Restaurants.find({ id }, (err, d) => {
     if (err) {
       callback(err, null);
     } else {
@@ -64,8 +65,8 @@ const getRestaurantsByName = (resName, callback) => {
 };
 
 const delRestaurantsById = (resId, callback) => {
-  const Id = parseInt(resId);
-  Restaurants.find({id: Id}, (err, d) => {
+  const id = parseInt(resId, 10);
+  Restaurants.deleteOne({ id }, (err, d) => {
     if (err) {
       callback(err, null);
     } else {
@@ -75,7 +76,51 @@ const delRestaurantsById = (resId, callback) => {
 };
 
 const delRestaurantsByName = (resName, callback) => {
-  Restaurants.find({ lName: resName }, (err, d) => {
+  Restaurants.deleteOne({ lName: resName }, (err, d) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, d);
+    }
+  });
+};
+
+const postRestaurantsById = (resId, callback) => {
+  const id = parseInt(resId, 10);
+  const restName = new Restaurants({ id });
+  restName.save((err, d) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, d);
+    }
+  });
+};
+
+const postRestaurantsByName = (resName, callback) => {
+  const restName = new Restaurants({ name: resName });
+  restName.save((err, d) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, d);
+    }
+  });
+};
+
+const putRestaurantsById = (resId, callback) => {
+  const id = parseInt(resId, 10);
+  Restaurants.updateOne({ id }, { name: 'sup' }, (err, d) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, d);
+    }
+  });
+};
+
+const putRestaurantsByName = (resName, callback) => {
+  Restaurants.updateOne({ lName: resName }, { name: 'sup' }, (err, d) => {
     if (err) {
       callback(err, null);
     } else {
@@ -89,4 +134,8 @@ module.exports = {
   getRestaurantsById,
   delRestaurantsById,
   delRestaurantsByName,
+  postRestaurantsById,
+  postRestaurantsByName,
+  putRestaurantsById,
+  putRestaurantsByName,
 };

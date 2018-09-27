@@ -1,15 +1,10 @@
-let faker = require('faker');
-let _ = require('underscore');
+const faker = require('faker');
+const _ = require('underscore');
 
-const restaurantName = ["Minhas Micro Brewery",
- "CK'S BBQ & Catering", 
- "La Bastringue", "The Coffee Bean & Tea Leaf", "Bnc Cake House", "Thai One On", "Filiberto's Mexican Food", "Sushi 8", "Southern Accent Restaurant", "Original Hamburger Works", "Mysore Indian Cuisine", "Safeway Food & Drug", "Harlow", "CakesbyToi", "Rally's Hamburgers", "Rib Shop", "Mabel's Bakery", "Salsitas", "Los Toros Numero 2", "The Coffee Mill Restaurant", "Teresas Pizzeria", "Chicken Lips", "Subway", "Omelet House Summerlin", "Crossroads Country Cafe'", "Strickland's Ice Cream", "John John's Seafood", "Little Caesars Pizza", "Dunkin Donuts", "Kim Phat Inc", "Manuel's Mexican Restaurant & Cantina - Bell Rd", "La Rosa Chilena", "Junior's Pizzeria", "Subway", "Baja Fresh Mexican Grill", "China Palace", "Allwyn's Bakery", "Fornetti", "Provence Bakery", "Ice Cream Patio", "Hub Coffee House & Locavorium", "Pizza Bellagio", "Regino's Pizza", "Avenue Deli", "More Than Pies Baking", "Indian Street Food Company", "Jack's Liquor", "Tipsy Ryde", "Wendy's", "McDonalds", "Fat Ox", "Tang Dynasty Restaurant And Bar", "Sammy's Beach Bar & Grill", "Harvey's Restaurants", "Honey's Beestro", "The Nest", "Applebee's Grill + Bar", "Anchor Bar", "I Wings", "Frite Alors", "Vocé Ristorante and Lounge", "Whiskey Rose Bar & Grill", "Popeyes Louisiana Kitchen", "Wing's Express", "Pizza Hut", "Sansei Japan", "Burrito Boyz", "L2 Lounge", "Chan Yang", "Long John Silver's", "Sunny Foodmart", "Weinkontor", "Loblaws", "Seasonal Adventures Pumpkin Patch", "Carte Blanche", "Schlotzsky's", "A & A International Food", "Arby's", "Higley Hot Dog Hut", "Pho 198", "Sweet Mahal", "La Cabana", "Hooters", "Boston Market", "Sauter's Inn Restaurant", "El Pollo Loco", "Ave Maria Latin Café", "Dave's Surf & Turf", "Popeyes Louisiana Kitchen", "Chicago Deep Dish Pizza", "Quesada Mexican Grill", "Great Wall", "Ten Feet Tall", "Velvet Sunrise Coffee Roasters", "Caspian Cafe & Catering", "Giulietta", "Sea Hut", "Chicago Brewing Company", "Port of Subs", "Chef's Cafe"];
+const restaurantName = ["Minhas Micro Brewery", "CK'S BBQ & Catering", "La Bastringue", "The Coffee Bean & Tea Leaf", "Bnc Cake House", "Thai One On", "Filiberto's Mexican Food", "Sushi 8", "Southern Accent Restaurant", "Original Hamburger Works", "Mysore Indian Cuisine", "Safeway Food & Drug", "Harlow", "CakesbyToi", "Rally's Hamburgers", "Rib Shop", "Mabel's Bakery", "Salsitas", "Los Toros Numero 2", "The Coffee Mill Restaurant", "Teresas Pizzeria", "Chicken Lips", "Subway", "Omelet House Summerlin", "Crossroads Country Cafe'", "Strickland's Ice Cream", "John John's Seafood", "Little Caesars Pizza", "Dunkin Donuts", "Kim Phat Inc", "Manuel's Mexican Restaurant & Cantina - Bell Rd", "La Rosa Chilena", "Junior's Pizzeria", "Subway", "Baja Fresh Mexican Grill", "China Palace", "Allwyn's Bakery", "Fornetti", "Provence Bakery", "Ice Cream Patio", "Hub Coffee House & Locavorium", "Pizza Bellagio", "Regino's Pizza", "Avenue Deli", "More Than Pies Baking", "Indian Street Food Company", "Jack's Liquor", "Tipsy Ryde", "Wendy's", "McDonalds", "Fat Ox", "Tang Dynasty Restaurant And Bar", "Sammy's Beach Bar & Grill", "Harvey's Restaurants", "Honey's Beestro", "The Nest", "Applebee's Grill + Bar", "Anchor Bar", "I Wings", "Frite Alors", "Vocé Ristorante and Lounge", "Whiskey Rose Bar & Grill", "Popeyes Louisiana Kitchen", "Wing's Express", "Pizza Hut", "Sansei Japan", "Burrito Boyz", "L2 Lounge", "Chan Yang", "Long John Silver's", "Sunny Foodmart", "Weinkontor", "Loblaws", "Seasonal Adventures Pumpkin Patch", "Carte Blanche", "Schlotzsky's", "A & A International Food", "Arby's", "Higley Hot Dog Hut", "Pho 198", "Sweet Mahal", "La Cabana", "Hooters", "Boston Market", "Sauter's Inn Restaurant", "El Pollo Loco", "Ave Maria Latin Café", "Dave's Surf & Turf", "Popeyes Louisiana Kitchen", "Chicago Deep Dish Pizza", "Quesada Mexican Grill", "Great Wall", "Ten Feet Tall", "Velvet Sunrise Coffee Roasters", "Caspian Cafe & Catering", "Giulietta", "Sea Hut", "Chicago Brewing Company", "Port of Subs", "Chef's Cafe"];
 
-let restaurants = [];
+const restaurants = [];
 
-let rating1 = [null, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-let rating2 = [3, 4, 5, 6, 7, 8, 9];
-let incDec = [-1, 0, 1];
 let categories = {
   'Food': [
     'Afghan',
@@ -182,12 +177,16 @@ let categories = {
   ]
 };
 
-let getRandomRatings = (rate) => {
+let rating1 = [null, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const rating2 = [3, 4, 5, 6, 7, 8, 9];
+const incDec = [-1, 0, 1];
+
+const getRandomRatings = (rate) => {
   let output = [];
-  let jan = rate || rating2[Math.floor(Math.random() * Math.floor(7))];
-  let temp = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
+  const jan = rate || rating2[Math.floor(Math.random() * Math.floor(7))];
+  const temp = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
   output.push(jan);
-  let ratings = _.map(temp, () => {
+  const ratings = _.map(temp, () => {
     return incDec[Math.floor(Math.random() * Math.floor(3))];
   });
   let rateStore = output[0];
@@ -202,29 +201,29 @@ let getRandomRatings = (rate) => {
     return rateStore;
   }));
   return output;
-}
+};
 
 let increment = 1;
 
 restaurantName.forEach((res) => {
-  let data = {};
+  const data = {};
   data.name = res;
-  //ratings
+  // ratings
   data.ratings = {
     yearly: {
-      '2016': getRandomRatings()
+      2016: getRandomRatings(),
     },
     current: 0,
     stars: {
-      '5': Math.floor(Math.random() * Math.floor(50)),
-      '4': Math.floor(Math.random() * Math.floor(40)),
-      '3': Math.floor(Math.random() * Math.floor(30)),
-      '2': Math.floor(Math.random() * Math.floor(30)),
-      '1': Math.floor(Math.random() * Math.floor(30))
+      5: Math.floor(Math.random() * Math.floor(50)),
+      4: Math.floor(Math.random() * Math.floor(40)),
+      3: Math.floor(Math.random() * Math.floor(30)),
+      2: Math.floor(Math.random() * Math.floor(30)),
+      1: Math.floor(Math.random() * Math.floor(30)),
     },
-    amount: 0
-  }
-  //adding ratings amount & current rating
+    amount: 0,
+  };
+  // adding ratings amount & current rating
   data.ratings.amount = data.ratings.stars['5'] + data.ratings.stars['4'] + data.ratings.stars['3'] + data.ratings.stars['2'] + data.ratings.stars['1']; 
   data.ratings.current = Math.floor(((data.ratings.stars['5']*5 + data.ratings.stars['4']*4 + data.ratings.stars['3']*3 + data.ratings.stars['2']*2 + data.ratings.stars['1'])/data.ratings.amount)*2);
   //adding 2017 and 2018(- 9,10,11,12 months) monthly ratings

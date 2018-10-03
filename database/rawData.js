@@ -279,7 +279,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/yelpReactor', {useNewUrlParser: true
 
 let restaurantSchema = mongoose.Schema({
   id: Number,
-  lName: String,
   name: String,
   ratings: {
     yearly: {

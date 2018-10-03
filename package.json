@@ -50,10 +50,8 @@
     "express-http-proxy": "^1.4.0",
     "fs": "0.0.1-security",
     "jquery": "^3.3.1",
-    "knex": "^0.15.2",
     "mz": "^2.7.0",
     "pg": "^7.4.3",
-    "split2": "^3.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

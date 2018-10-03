@@ -23,4 +23,8 @@ coverage
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 build/
 dist/bundle.js
-
+database/sampleData
+database/csvData
+database/restaurantJSON
+database.
+companyNames.csv

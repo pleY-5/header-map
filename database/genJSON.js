@@ -224,20 +224,20 @@ const genRestaurant = (increment, letter) => {
     // }
     data.name = 'TuLan' + number + letter;
     //ratings
-    data.ratings = {
-        yearly: {
-        '2016': getRandomRatings()
-        },
-        current: 0,
-        stars: {
-        '5': Math.floor(Math.random() * Math.floor(50)),
-        '4': Math.floor(Math.random() * Math.floor(40)),
-        '3': Math.floor(Math.random() * Math.floor(30)),
-        '2': Math.floor(Math.random() * Math.floor(30)),
-        '1': Math.floor(Math.random() * Math.floor(30))
-        },
-        amount: 0
-    }
+    // data.ratings = {
+    //     yearly: {
+    //     '2016': getRandomRatings()
+    //     },
+    //     current: 0,
+    //     stars: {
+    //     '5': Math.floor(Math.random() * Math.floor(50)),
+    //     '4': Math.floor(Math.random() * Math.floor(40)),
+    //     '3': Math.floor(Math.random() * Math.floor(30)),
+    //     '2': Math.floor(Math.random() * Math.floor(30)),
+    //     '1': Math.floor(Math.random() * Math.floor(30))
+    //     },
+    //     amount: 0
+    // }
     //adding ratings amount & current rating
     data.ratings.amount = data.ratings.stars['5'] + data.ratings.stars['4'] + data.ratings.stars['3'] + data.ratings.stars['2'] + data.ratings.stars['1']; 
     data.ratings.current = Math.floor(((data.ratings.stars['5']*5 + data.ratings.stars['4']*4 + data.ratings.stars['3']*3 + data.ratings.stars['2']*2 + data.ratings.stars['1'])/data.ratings.amount)*2);

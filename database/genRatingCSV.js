@@ -42,15 +42,18 @@ const genIndivMonth = (allPossibilities, counter, fileNum, mil) => {
             }
             data.push(years[yearCount]);
             data.push(months[monthCount]);
-            data.push(getRandomInt(1,5) + getRandomInt(1,5) + getRandomInt(1,5));
-            data.push(3);
+            data.push(getRandomInt(1,5));
+            data.push(getRandomInt(1,5));
+            data.push(getRandomInt(1,5));
+            data.push(getRandomInt(1,5));
+            data.push(getRandomInt(1,5));
             data.push(i + counter*12500 + mil*1000000);
             allPossibilities.push(data);
             monthCount += 1;
         }
         yearCount = 0;
     }
-    fs.appendFile(`./csvData/ratingInfo/rateInfo${fileNum}_${counter}.csv`, 'year,month,stars,numRatings,restaurantId\n', (err) => {
+    fs.appendFile(`./csvData/ratingInfo/rateInfo${fileNum}_${counter}.csv`, 'year,month,stars1,stars2,stars3,stars4,stars5,restaurantId\n', (err) => {
         if (err) {
             console.log(err);
         } else {

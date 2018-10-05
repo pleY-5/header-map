@@ -47,7 +47,7 @@ async function main () {
 
     for (let i = 1; i <= 10; i++) {
         for (let j= 0; j < 80; j++) {
-            const ratingQuery = `COPY rating(year, month, stars, numRatings, restaurantId) FROM 'C:/Users/Spencer/Desktop/Hack-Reactor Projects/header-map/database/csvData/ratingInfo/rateInfo${i}_${j}.csv' DELIMITER ',' CSV HEADER;`
+            const ratingQuery = `COPY rating(year, month, stars1, stars2, stars3, stars4, stars5, restaurantId) FROM 'C:/Users/Spencer/Desktop/Hack-Reactor Projects/header-map/database/csvData/ratingInfo/rateInfo${i}_${j}.csv' DELIMITER ',' CSV HEADER;`
             const ratingCopy = await client.query(ratingQuery);
         }
         console.log(i);

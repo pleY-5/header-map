@@ -50,6 +50,7 @@
     "fs": "0.0.1-security",
     "jquery": "^3.3.1",
     "mz": "^2.7.0",
+    "newrelic": "^4.9.0",
     "pg": "^7.4.3"
   },
   "devDependencies": {

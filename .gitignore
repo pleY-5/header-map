@@ -28,3 +28,4 @@ database/csvData
 database/restaurantJSON
 database.
 companyNames.csv
+.env

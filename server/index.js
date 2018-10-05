@@ -1,7 +1,8 @@
 const bodyParser = require('body-parser');
-const cors = require('cors');
+// const cors = require('cors');
 const express = require('express');
 const models = require('../database/postGresModels.js');
+require('newrelic');
 
 const app = express();
 
@@ -14,7 +15,7 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
 const { getRestaurantsByName, getRestaurantsById } = models;
 // const { delRestaurantsByName, delRestaurantsById } = models;
@@ -91,7 +92,7 @@ const formatData = (data) => {
   return formattedData;
 }
 
-app.get('/:id/res', cors(corsOptions), (req, res) => {  
+app.get('/:id/res', (req, res) => {  
   const resIdOrName = req.param('id');
   if (Number.isNaN(parseInt(resIdOrName, 10))) {
     getRestaurantsByName(resIdOrName, (err, data) => {
@@ -104,7 +105,7 @@ app.get('/:id/res', cors(corsOptions), (req, res) => {
   }
 });
 
-app.get('/api/header/:id/res', cors(corsOptions), (req, res) => {  
+app.get('/api/header/:id/res', (req, res) => {  
   const resIdOrName = req.param('id');
   if (Number.isNaN(parseInt(resIdOrName, 10))) {
     getRestaurantsByName(resIdOrName, (err, data) => {

@@ -1,25 +1,32 @@
+require('newrelic');
 const bodyParser = require('body-parser');
 // const cors = require('cors');
 const express = require('express');
+const redis = require('redis');
+
 const models = require('../database/postGresModels.js');
-require('newrelic');
 
 const app = express();
+const client = redis.createClient();
+
+client.on('error', (err) => {
+  console.log(err);
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/:id', express.static('./client/dist'));
 
-const corsOptions = {
-  origin: 'http://localhost:1335',
-  optionsSuccessStatus: 200,
-};
+// const corsOptions = {
+//   origin: 'http://localhost:1335',
+//   optionsSuccessStatus: 200,
+// };
 
 // app.use(cors(corsOptions));
 
 const { getRestaurantsByName, getRestaurantsById } = models;
 // const { delRestaurantsByName, delRestaurantsById } = models;
-// const { postRestaurantsByName, postRestaurantsById } = models;
+const { postRestaurantsByName, postRestaurantsById } = models;
 // const { putRestaurantsByName, putRestaurantsById } = models;
 
 const calculateRatings = (dataBody) => {
@@ -109,15 +116,57 @@ app.get('/api/header/:id/res', (req, res) => {
   const resIdOrName = req.param('id');
   if (Number.isNaN(parseInt(resIdOrName, 10))) {
     getRestaurantsByName(resIdOrName, (err, data) => {
-      // res.send(JSON.stringify(formatData(data.fields)));
       res.send(JSON.stringify(formatData(data.rows)));
     });
   } else {
-    getRestaurantsById(resIdOrName, (err, data) => {
-      res.send(JSON.stringify(formatData(data.rows)));
+    client.get(resIdOrName, (err, obj) => {
+      if(!obj) {
+        getRestaurantsById(resIdOrName, (err, data) => {
+          client.set(resIdOrName, JSON.stringify(formatData(data.rows)));
+          res.send(JSON.stringify(formatData(data.rows)));
+          // res.send(data)
+        });
+      } else {
+        console.log(obj);
+        res.send(obj);
+      }
     });
   }
 });
+
+app.post('/api/header/:id/res', (req, res) => {
+  const resIdOrName = req.param('id');
+  if (Number.isNaN(parseInt(resIdOrName, 10))) {
+    postRestaurantsByName(resIdOrName, (err, data) => {
+      if(err) {
+        res.send(err);
+      } else {
+        res.send('posted');
+      }
+    });
+  } else {
+    postRestaurantsById(resIdOrName, (err, data) => {
+      if(err) {
+        res.send(err);
+      } else {
+        res.send('posted');
+      }
+    });
+  }
+});
+
+// app.put('/api/header/:id/res', (req, res) => {
+//   const resIdOrName = req.param('id');
+//   if (Number.isNaN(parseInt(resIdOrName, 10))) {
+//     putRestaurantsByName(resIdOrName, (err, data) => {
+//       res.send(JSON.stringify(data[0]));
+//     });
+//   } else {
+//     putRestaurantsById(resIdOrName, (err, data) => {
+//       res.send(JSON.stringify(data[0]));
+//     });
+//   }
+// });
 
 // app.get('/api/header/:id/res', cors(corsOptions), (req, res) => {
 //   const resIdOrName = req.param('id');
@@ -145,31 +194,7 @@ app.get('/api/header/:id/res', (req, res) => {
 //   }
 // });
 
-// app.post('/api/header/:id/res', (req, res) => {
-//   const resIdOrName = req.param('id');
-//   if (Number.isNaN(parseInt(resIdOrName, 10))) {
-//     postRestaurantsByName(resIdOrName, (err, data) => {
-//       res.send(JSON.stringify(data[0]));
-//     });
-//   } else {
-//     postRestaurantsById(resIdOrName, (err, data) => {
-//       res.send(JSON.stringify(data[0]));
-//     });
-//   }
-// });
 
-// app.put('/api/header/:id/res', (req, res) => {
-//   const resIdOrName = req.param('id');
-//   if (Number.isNaN(parseInt(resIdOrName, 10))) {
-//     putRestaurantsByName(resIdOrName, (err, data) => {
-//       res.send(JSON.stringify(data[0]));
-//     });
-//   } else {
-//     putRestaurantsById(resIdOrName, (err, data) => {
-//       res.send(JSON.stringify(data[0]));
-//     });
-//   }
-// });
 
 
 const port = 7763;

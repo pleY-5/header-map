@@ -1,16 +1,17 @@
 require('dotenv').config();
 
-const { Client } = require('pg');
+const { Pool } = require('pg');
 
-const client = new Client({
+const pool = new Pool({
     user: process.env.DB_USER,
     host: 'localhost',
     database: process.env.DB_DB,
     password: process.env.DB_PASS,
     port: 5432,
+    // max: 24,
 });
 
-client.connect((err) => {
+pool.connect((err) => {
     if (err) {
         console.log(err);
     } else {
@@ -21,7 +22,7 @@ client.connect((err) => {
 const getRestaurantsById = (resId, callback) => {
     const id = parseInt(resId, 10);
     const getIdResQuery = `SELECT * FROM restaurant INNER JOIN category ON restaurant.id=category.restaurantid INNER JOIN rating ON restaurant.id=rating.restaurantid WHERE restaurant.id=${id};`;
-    client.query(getIdResQuery, (err, d) => {
+    pool.query(getIdResQuery, (err, d) => {
       if (err) {
         callback(err, null);
       } else {
@@ -33,7 +34,7 @@ const getRestaurantsById = (resId, callback) => {
   const getRestaurantsByName = (resName, callback) => {
     const uppResName = `TuLan${resName.substring(5, resName.length)}`;
     const getNameResQuery = `SELECT * FROM restaurant INNER JOIN category ON restaurant.id=category.restaurantid INNER JOIN rating ON restaurant.id=rating.restaurantid WHERE restaurant.name='${uppResName}';`;
-    client.query(getNameResQuery, (err, d) => {
+    pool.query(getNameResQuery, (err, d) => {
       if (err) {
         callback(err, null);
       } else {
@@ -44,8 +45,8 @@ const getRestaurantsById = (resId, callback) => {
 
   const postRestaurantsById = (resId, callback) => {
     const id = parseInt(resId, 10);
-    const postIdResQuery = `INSERT INTO restaurant (id) VALUES (${id})`;
-    client.query(postIdResQuery, (err, d) => {
+    const postIdResQuery = `INSERT INTO restaurant (id,name,dollars,address,city,state,postalCode,latitude,longitude,tel,url,claimed,yelpingSince) VALUES (${id},'TuLanOG',1,'Hack Reactor Place','San Francisco','California',94014,'-1','1','329-223-1333','www.google.com',0,'Tue Jan 06 2009 14:57:52 GMT-0800 (Pacific Standard Time)')`;
+    pool.query(postIdResQuery, (err, d) => {
       if (err) {
         callback(err, null);
       } else {
@@ -55,8 +56,8 @@ const getRestaurantsById = (resId, callback) => {
   };
   
   const postRestaurantsByName = (resName, callback) => {
-    const getNameResQuery = `INSERT INTO restaurant (name) VALUES ('${resName}')`;
-    client.query(getNameResQuery, (err, d) => {
+    const getNameResQuery = `INSERT INTO restaurant (name,dollars,address,city,state,postalCode,latitude,longitude,tel,url,claimed,yelpingSince) VALUES ('${resName}',1,'Hack Reactor Place','San Francisco','California',94014,'-1','1','329-223-1333','www.google.com',0,'Tue Jan 06 2009 14:57:52 GMT-0800 (Pacific Standard Time)')`;
+    pool.query(getNameResQuery, (err, d) => {
       if (err) {
         callback(err, null);
       } else {
@@ -68,7 +69,7 @@ const getRestaurantsById = (resId, callback) => {
   const delRestaurantsById = (resId, callback) => {
     const id = parseInt(resId, 10);
     const delIdResQuery = `DELETE FROM restaurant WHERE id=${id}`;
-    client.query(delIdResQuery, (err, d) => {
+    pool.query(delIdResQuery, (err, d) => {
       if (err) {
         callback(err, null);
       } else {
@@ -79,7 +80,7 @@ const getRestaurantsById = (resId, callback) => {
   
   const delRestaurantsByName = (resName, callback) => {
     const delNameResQuery = `DELETE FROM restaurant WHERE name=${resName}`;
-    client.query(delNameResQuery, (err, d) => {
+    pool.query(delNameResQuery, (err, d) => {
       if (err) {
         callback(err, null);
       } else {
@@ -91,7 +92,7 @@ const getRestaurantsById = (resId, callback) => {
   const putRestaurantsById = (resId, callback) => {
     const id = parseInt(resId, 10);
     const putIdResQuery =  `UPDATE restaurant SET id=9999999 WHERE id=${id}`;
-    client.query(putIdResQuery, (err, d) => {
+    pool.query(putIdResQuery, (err, d) => {
       if (err) {
         callback(err, null);
       } else {
@@ -102,7 +103,7 @@ const getRestaurantsById = (resId, callback) => {
   
   const putRestaurantsByName = (resName, callback) => {
     const putNameResQuery = `UPDATE restaurant SET name='tulaan' WHERE name='${resName}'`;
-    client.query(putNameResQuery, (err, d) => {
+    pool.query(putNameResQuery, (err, d) => {
       if (err) {
         callback(err, null);
       } else {

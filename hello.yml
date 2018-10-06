@@ -1,0 +1,14 @@
+config:
+  target: 'http://localhost:7763'
+  phases:
+    - duration: 30
+      arrivalRate: 300
+  payload:
+    path: 'artTest.csv'
+    fields:
+      - 'id'
+scenarios:
+  - flow:
+    - get:
+        url: "/api/header/{{ $randomNumber(1,10000000) }}/res/"
+      

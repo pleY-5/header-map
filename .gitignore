@@ -29,3 +29,6 @@ database/restaurantJSON
 database.
 companyNames.csv
 .env
+header-map.pem
+restaurants.tar
+dump.rdb

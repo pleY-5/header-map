@@ -115,22 +115,52 @@ app.get('/:id/res', (req, res) => {
 app.get('/api/header/:id/res', (req, res) => {  
   const resIdOrName = req.param('id');
   if (Number.isNaN(parseInt(resIdOrName, 10))) {
-    getRestaurantsByName(resIdOrName, (err, data) => {
-      res.send(JSON.stringify(formatData(data.rows)));
-    });
+    if(!obj) {
+      getRestaurantsByName(resIdOrName, (err, data) => {
+        if (err) { 
+          res.status(400).send(err);
+        } else {
+          client.set(resIdOrName, JSON.stringify(formatData(data.rows)));
+          res.send(JSON.stringify(formatData(data.rows)));
+        }
+        // res.send(data)
+      });
+    } else {
+      // console.log(obj);
+      if (err) {
+        res.status(400).send(err);
+      } else {
+        res.send(obj);
+      }
+    }
   } else {
     client.get(resIdOrName, (err, obj) => {
       if(!obj) {
         getRestaurantsById(resIdOrName, (err, data) => {
-          client.set(resIdOrName, JSON.stringify(formatData(data.rows)));
-          res.send(JSON.stringify(formatData(data.rows)));
+          if (err) { 
+            res.status(400).send(err);
+          } else {
+            client.set(resIdOrName, JSON.stringify(formatData(data.rows)));
+            res.send(JSON.stringify(formatData(data.rows)));
+          }
           // res.send(data)
         });
       } else {
-        console.log(obj);
-        res.send(obj);
+        // console.log(obj);
+        if (err) {
+          res.status(400).send(err);
+        } else {
+          res.send(obj);
+        }
       }
     });
+    // getRestaurantsById(resIdOrName, (err, data) => {
+    //   if (err) { 
+    //     res.status(400).send(err);
+    //   } else {
+    //     res.send(JSON.stringify(formatData(data.rows)));
+    //   }
+    // });
   }
 });
 
@@ -200,5 +230,5 @@ app.post('/api/header/:id/res', (req, res) => {
 const port = 7763;
 
 app.listen(port, () => {
-  console.log(`listening on port ${port}`);
+  // console.log(`listening on port ${port}`);
 });

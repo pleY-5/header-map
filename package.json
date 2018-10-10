@@ -38,10 +38,11 @@
   "scripts": {
     "pack": "webpack --mode production --watch",
     "seed": "node database/rawData.js",
-    "start": "nodemon server/index.js",
+    "start": "nodemon server/cluster.js",
     "test": "jest --coverage --verbose"
   },
   "dependencies": {
+    "cluster": "^0.7.7",
     "csv": "^3.1.0",
     "csv-parser": "^2.0.0",
     "csv-stringify": "^4.0.1",

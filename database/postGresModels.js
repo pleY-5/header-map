@@ -8,7 +8,7 @@ const pool = new Pool({
     database: process.env.DB_DB,
     password: process.env.DB_PASS,
     port: 5432,
-    // max: 24,
+    max: 100,
 });
 
 pool.connect((err) => {

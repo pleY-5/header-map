@@ -37,3 +37,4 @@ redis-server.pem
 restaurants.tar
 dump.rdb
 header-map2.pem
+service-instances.pem

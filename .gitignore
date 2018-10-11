@@ -24,11 +24,16 @@ coverage
 build/
 dist/bundle.js
 database/sampleData
-database/csvData
+database/csvData/categoryInfo
+database/csvData/ratingInfo
+database/csvData/restaurantInfo
+database/csvData/ratingCopyCMD.csv
 database/restaurantJSON
 database.
 companyNames.csv
 .env
 header-map.pem
+redis-server.pem
 restaurants.tar
 dump.rdb
+header-map2.pem

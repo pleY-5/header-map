@@ -1,4 +1,6 @@
 require('newrelic');
+require('dotenv').config();
+
 const bodyParser = require('body-parser');
 // const cors = require('cors');
 const express = require('express');
@@ -7,7 +9,7 @@ const redis = require('redis');
 const models = require('../database/postGresModels.js');
 
 const app = express();
-const client = redis.createClient();
+const client = redis.createClient(process.env.REDIS_PORT, process.env.REDIS_HOST);
 
 client.on('error', (err) => {
   console.log(err);
@@ -115,24 +117,26 @@ app.get('/:id/res', (req, res) => {
 app.get('/api/header/:id/res', (req, res) => {  
   const resIdOrName = req.param('id');
   if (Number.isNaN(parseInt(resIdOrName, 10))) {
-    if(!obj) {
-      getRestaurantsByName(resIdOrName, (err, data) => {
-        if (err) { 
+    client.get(resIdOrName, (err, obj) => {
+      if(!obj) {
+        getRestaurantsByName(resIdOrName, (err, data) => {
+          if (err) { 
+            res.status(400).send(err);
+          } else {
+            client.set(resIdOrName, JSON.stringify(formatData(data.rows)));
+            res.send(JSON.stringify(formatData(data.rows)));
+          }
+          // res.send(data)
+        });
+      } else {
+        // console.log(obj);
+        if (err) {
           res.status(400).send(err);
         } else {
-          client.set(resIdOrName, JSON.stringify(formatData(data.rows)));
-          res.send(JSON.stringify(formatData(data.rows)));
+          res.send(obj);
         }
-        // res.send(data)
-      });
-    } else {
-      // console.log(obj);
-      if (err) {
-        res.status(400).send(err);
-      } else {
-        res.send(obj);
       }
-    }
+    });
   } else {
     client.get(resIdOrName, (err, obj) => {
       if(!obj) {
